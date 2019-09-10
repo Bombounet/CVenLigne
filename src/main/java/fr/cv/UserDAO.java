@@ -25,6 +25,7 @@ public class UserDAO {
 
   @PostConstruct
   public void initDb() {
+
     List<Experience> experiences = new ArrayList<>();
     List<Formation> formations = new ArrayList<>();
     List<Projet> projets = new ArrayList<>();

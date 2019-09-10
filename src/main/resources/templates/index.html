@@ -10,119 +10,32 @@
 </head>
 
 <body style="background-color: darkslategrey; color: floralwhite;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My CV</a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Formations</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Expériences</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Compétences</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                   href="#"
-                   id="navbarDropdown" role="button">
-                    Projets
-                </a>
-                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
 
 
-            <li class="nav-item my-2 my-lg-0">
-                <a class="nav-link my-2 my-lg-0" href="#">Contact</a>
-            </li>
+
+<div th:replace="template :: navbar"></div>
 
 
-        </ul>
-    </div>
-</nav>
 
 
 <div class="container">
-    <section id="NOM PRENOM">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">NOM PRENOM</h2>
-            </div>
-            <div class="section-content">
-              <p>Bla <strong>Bla </strong>Bla</p>
-              <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
-    <section id="BIO">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">BIO</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
-                <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
-    <section id="FORMATION">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">FORMATION</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
-                <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
-    <section id="EXPERIENCE">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">EXPERIENCE</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
-                <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
-    <section id="COMPETENCES">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">COMPETENCES</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
-                <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="container">
 
 
-    <!--      <tbody>-->
-    <!--      <tr th:each="user : ${users}">-->
-    <!--        <td scope="row" th:text="${user.firstName}"></td>-->
-    <!--        <td th:text="${user.lastName}"></td>-->
-    <!--        <td th:text="${user.age}"></td>-->
-    <!--      </tr>-->
-    <!--      </tbody>-->
+    <p>vfgusbidfocvgvuihefuidgifdbvigdfhgiuudfuvsigfduvgefugvuerdgvuqsbgruferuiv</p>
+<!--      <tbody>-->
+<!--      <tr th:each="user : ${users}">-->
+<!--        <td scope="row" th:text="${user.firstName}"></td>-->
+<!--        <td th:text="${user.lastName}"></td>-->
+<!--        <td th:text="${user.age}"></td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
 
 </div>
+
+
+
+
+<div th:replace="template :: footer"></div>
 
 </body>
 

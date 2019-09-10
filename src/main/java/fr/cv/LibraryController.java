@@ -28,16 +28,25 @@ public class LibraryController {
     return "index";
   }
 
-  @GetMapping("/new")
+  @GetMapping("/contact")
   public String addUserPage(Model m) {
     m.addAttribute("user", new User());
-    return "new";
+    return "contact";
   }
 
-  @PostMapping("/new")
+  @PostMapping("/contact")
   public RedirectView createNewUser(@ModelAttribute User user, RedirectAttributes attrs) {
-    attrs.addFlashAttribute("message", "Utilisateur ajouté avec succès");
     userDAO.add(user);
+    return new RedirectView("/");
+  }
+
+  @GetMapping("/formations")
+  public String seeFormations() {
+    return "formations";
+  }
+
+  @PostMapping("/formations")
+  public RedirectView quitFormations() {
     return new RedirectView("/");
   }
 
