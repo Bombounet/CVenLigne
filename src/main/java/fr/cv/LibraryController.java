@@ -29,23 +29,27 @@ public class LibraryController {
   }
 
   @GetMapping("/contact")
-  public String seeContact(Model m) {
-    return "contact";
-  }
+  public String seeContact(Model m) {return "contact"; }
 
   @PostMapping("/contact")
-  public RedirectView closeContact() {
-    return new RedirectView("/");
-  }
+  public RedirectView closeContact() {return new RedirectView("/"); }
 
   @GetMapping("/formations")
-  public String seeFormations() {
-    return "formations";
-  }
+  public String seeFormations() {return "formations";}
 
   @PostMapping("/formations")
-  public RedirectView quitFormations() {
-    return new RedirectView("/");
-  }
+  public RedirectView quitFormations() {return new RedirectView("/");}
+
+  @GetMapping("/experiences")
+  public String seeExperiences() {return "experiences";}
+
+  @PostMapping("/experiences")
+  public RedirectView quitExperiences() {return new RedirectView("/");}
+
+  @GetMapping("/competences")
+  public String seeCompetences() {return "competences";}
+
+  @PostMapping("/competences")
+  public RedirectView quitCompetences() {return new RedirectView("/");}
 
 }
