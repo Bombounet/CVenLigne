@@ -26,7 +26,5 @@ public class UserDAO {
   @PostConstruct
   public void initDb() {
     users.add(new User("Loïc", "Ortola", 29));
-    users.add(new User("Thibault", "Roussin", 22));
-    users.add(new User("Nadia", "Comptier", null));
   }
 }
