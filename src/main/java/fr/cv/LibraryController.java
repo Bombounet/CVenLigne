@@ -29,14 +29,12 @@ public class LibraryController {
   }
 
   @GetMapping("/contact")
-  public String addUserPage(Model m) {
-    m.addAttribute("user", new User());
+  public String seeContact(Model m) {
     return "contact";
   }
 
   @PostMapping("/contact")
-  public RedirectView createNewUser(@ModelAttribute User user, RedirectAttributes attrs) {
-    userDAO.add(user);
+  public RedirectView closeContact() {
     return new RedirectView("/");
   }
 
