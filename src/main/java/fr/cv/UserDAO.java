@@ -1,4 +1,4 @@
-package fr.takima.demo;
+package fr.cv;
 
 import org.springframework.stereotype.Repository;
 
