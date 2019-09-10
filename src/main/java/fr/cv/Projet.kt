@@ -1,5 +1,5 @@
 package fr.cv
 
-class Projets {
+data class Projet(var name: String?, var year: String?, var place: String?,var description: String?){
 
 }
