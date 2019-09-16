@@ -24,7 +24,7 @@ public class LibraryController {
 
   @GetMapping
   public String homePage(Model m) {
-    m.addAttribute("users", userDAO.findAll());
+    m.addAttribute("user", userDAO.getUser());
     return "index";
   }
 
