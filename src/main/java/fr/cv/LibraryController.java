@@ -24,7 +24,7 @@ public class LibraryController {
 
   @GetMapping
   public String homePage(Model m) {
-    m.addAttribute("users", userDAO.findAll());
+    m.addAttribute("user", userDAO.getUser());
     return "index";
   }
 
@@ -51,5 +51,17 @@ public class LibraryController {
 
   @PostMapping("/competences")
   public RedirectView quitCompetences() {return new RedirectView("/");}
+
+  @GetMapping("/projets")
+  public String seeProjets() {return "projets";}
+
+  @PostMapping("/projets")
+  public RedirectView quitProjet() {return new RedirectView("/");}
+
+  @GetMapping("/edit")
+  public String seeEdit() {return "edit_index";}
+
+  @PostMapping("/edit")
+  public RedirectView quitEdit() {return new RedirectView("/");}
 
 }
