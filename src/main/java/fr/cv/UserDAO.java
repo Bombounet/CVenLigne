@@ -41,7 +41,7 @@ public class UserDAO {
     competences.add("Java");
     competences.add("C");
     competences.add("IA");
-    users.add(new User("Loïc", "Ortola", 8, 10,1997, "toto@hotmail.com" ,
+    users.add(new User(1,"Loïc", "Ortola", 8, 10,1997, "toto@hotmail.com" ,
             new Adresse("21 rue de la porte du passée","viennes",34250,"FRANCE") ,610798624 ,
              experiences,  formations,projets,competences ));
   }
