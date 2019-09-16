@@ -22,6 +22,7 @@ public class UserDAO {
     return Collections.unmodifiableList(users);
   }
 
+  public User getUser(){ return users.get(0);}
 
   @PostConstruct
   public void initDb() {
