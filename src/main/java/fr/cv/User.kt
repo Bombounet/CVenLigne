@@ -1,11 +1,43 @@
 package fr.cv
 
+import javax.persistence.*
+
 /**
  *
  */
-data class User(var firstName: String?, var lastName: String?, var birthMonth: Int?, var birthDay: Int?,
-                var birthYear: Int?, var email: String?, var adresse: Adresse?,var phoneNumber: Int?,var experiences: List<Experience>?,
-                var formations: List<Formation>?, var projets: List<Projet>?, var competences: List<String>?) {
+@Entity(name ="users")
+data class User(
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Id var id: Long?,
+        var firstName: String?,
+        var lastName: String?,
+        var birthMonth: Int?,
+        var birthDay: Int?,
+        var birthYear: Int?,
+        var email: String?,
+        var bio: String?,
 
+        @Embedded
+        var adresse: Adresse?,
+
+        var phoneNumber: Int?,
+
+        @OneToMany
+        var experiences: List<Experience>?,
+
+        @OneToMany
+        var formations: List<Formation>?,
+
+        @OneToMany
+        var projets: List<Projet>?,
+
+        @ManyToMany
+        @JoinTable( name = "users_competences",
+                joinColumns = arrayOf(JoinColumn(name = "user_id", referencedColumnName = "id")),
+                inverseJoinColumns = arrayOf(JoinColumn(name = "competences_id", referencedColumnName = "id")))
+        var competences: List<Competence>?) {
+
+
+        constructor() : this(null, null,null,null,null,null,null,null,null,null,null,null,null,null)
 
 }

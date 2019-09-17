@@ -2,10 +2,11 @@ package fr.cv;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 /**
  *
@@ -22,44 +23,167 @@ public class LibraryController {
 
   @GetMapping
   public String homePage(Model m) {
-    m.addAttribute("user", userDAO.getUser());
-    return "index";
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_index";
   }
 
-  @GetMapping("/contact")
-  public String seeContact(Model m) {return "contact"; }
+  @GetMapping("/edit")
+  public String editHomePage(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_index";
+  }
 
-  @PostMapping("/contact")
-  public RedirectView closeContact() {return new RedirectView("/"); }
+  @PostMapping("/edit/{id}")
+  public RedirectView majHomePage(@ModelAttribute User user,@PathVariable String id, RedirectAttributes attrs) {
+    //userDAO.changeInfoIndex(user);
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user1 = users.get(0);
+    user1.setFirstName(user.getFirstName());
+    user1.setLastName(user.getLastName());
+    userDAO.save(user1);
+    return new RedirectView("/");
+  }
+
+  /*------------------------------------------------------------------------------*/
+
+  @GetMapping("/contact")
+  public String contact(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_contact";
+  }
+
+  @GetMapping("/contact/edit")
+  public String editContact(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_contact";
+  }
+
+  @PostMapping("/contact/edit")
+  public RedirectView majContact(@ModelAttribute User user, RedirectAttributes attrs) {
+    //userDAO.changeInfoContact(user);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }
+
+  /*------------------------------------------------------------------------------*/
 
   @GetMapping("/formations")
-  public String seeFormations() {return "formations";}
+  public String formations(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_formations";
+  }
 
-  @PostMapping("/formations")
-  public RedirectView quitFormations() {return new RedirectView("/");}
+  @GetMapping("/formations/edit")
+  public String editFormations(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_formations";
+  }
+
+  @PostMapping("/formations/edit")
+  public RedirectView majFormations(@ModelAttribute User user, RedirectAttributes attrs) {
+    //userDAO.changeInfoFormations(user);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }
+
+  /*------------------------------------------------------------------------------*/
 
   @GetMapping("/experiences")
-  public String seeExperiences() {return "experiences";}
+  public String experiences(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_experiences";
+  }
 
-  @PostMapping("/experiences")
-  public RedirectView quitExperiences() {return new RedirectView("/");}
+  @GetMapping("/experiences/edit")
+  public String editExperiences(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_experiences";
+  }
+
+  @PostMapping("/experiences/edit")
+  public RedirectView majExperiences(@ModelAttribute User user, RedirectAttributes attrs) {
+    //userDAO.changeInfoExperiences(user);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }
+
+  /*------------------------------------------------------------------------------*/
 
   @GetMapping("/competences")
-  public String seeCompetences() {return "competences";}
+  public String competences(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_competences";
+  }
 
-  @PostMapping("/competences")
-  public RedirectView quitCompetences() {return new RedirectView("/");}
+  @GetMapping("/competences/edit")
+  public String editCompetences(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_competences";
+  }
+
+  @PostMapping("/competences/edit/{id}")
+  public RedirectView majCompetences(@ModelAttribute User user,@PathVariable String id, RedirectAttributes attrs) {
+    //userDAO.changeInfoCompetences(user);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }
+
+  /*------------------------------------------------------------------------------*/
 
   @GetMapping("/projets")
-  public String seeProjets() {return "projets";}
+  public String projets(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "see_projets";
+  }
 
-  @PostMapping("/projets")
-  public RedirectView quitProjet() {return new RedirectView("/");}
+  @GetMapping("/projets/edit")
+  public String ediProjets(Model m) {
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
+    return "edit_projets";
+  }
 
-  @GetMapping("/edit")
-  public String seeEdit() {return "edit_index";}
-
-  @PostMapping("/edit")
-  public RedirectView quitEdit() {return new RedirectView("/");}
+  @PostMapping("/projets/edit")
+  public RedirectView majProjets(@ModelAttribute User user, RedirectAttributes attrs) {
+    //userDAO.changeInfoProjets(user);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }
 
 }
