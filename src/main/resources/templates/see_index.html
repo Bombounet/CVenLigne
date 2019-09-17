@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="template :: headder"></head>
+
+<body>
+<div id="page-container">
+    <div th:replace="template :: navbar"></div>
+    <div id="content-wrap">
+        <section class="firstsection">
+            <h1>Je suis<br/>Ingénieur Numérique | Developpeur</h1>
+            <div class="divtext">
+                <p style="text-align: center"> Bienvenue sur mon CV en ligne. Je m'appelle Romain GALMES et je vous
+                    propose d'en
+                    savoir un peu plus sur moi...</p>
+            </div>
+        </section>
+        <section>
+            <h2>BIO</h2>
+            <h3 class="section-title" th:text="${user.lastName} +' '+ ${user.firstName}">******</h3>
+            <div class="divtext">
+                <img alt="woaw2"
+                     class="imgtext" height="150"
+                     src="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_960_720.png" width="200"/>
+                <p th:text="${user.email}">******</p>
+                <p th:text="${user.phoneNumber}">******</p>
+                <p th:text="${user.adresse.adress}">******</p>
+                <p th:text="${user.adresse.city} + ', '+ ${user.adresse.postcode}">******</p>
+                <p th:text="${user.adresse.country}">******</p>
+                <p th:text="${user.birthMonth}+'/'+ ${user.birthDay} +'/'+${user.birthYear}"></p>
+                <a class="btn btn-outline-secondary" href="http://epf.fr">Qui suis-je ?</a>
+            </div>
+        </section>
+        <section class="secondsection">
+            <h2>FORMATION</h2>
+            <div class="divtext">
+                <p>Bla <strong>Bla </strong>Bla</p>
+                <p>Bla Bla Bla</p>
+            </div>
+        </section>
+        <section>
+            <h2>EXPERIENCE</h2>
+            <div class="divtext">
+                <p>Bla <strong>Bla </strong>Bla</p>
+                <p>Bla Bla Bla</p>
+            </div>
+        </section>
+        <section class="secondsection">
+            <h2>COMPETENCES</h2>
+            <div class="divtext">
+                <p>Bla <strong>Bla </strong>Bla</p>
+                <p>Bla Bla Bla</p>
+            </div>
+        </section>
+        <p><a href="mailto:votrenom@bidule.com">Envoyez-moi un e-mail !</a></p>
+        <div>
+            <a class="btn btn-outline-secondary" href="/edit">Edit</a>
+        </div>
+    </div>
+    <div th:replace="template :: footerbar"></div>
+</div>
+</body>
+</html>

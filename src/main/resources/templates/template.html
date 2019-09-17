@@ -1,19 +1,20 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<html xmlns:th="http://www.thymeleaf.org">
-
-<html lang="en">
-
-<head>
+<head th:fragment="headder">
+    <title>MyCV</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet">
 </head>
 
-
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
     <a class="navbar-brand" href="/">My CV</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,8 +31,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/projets">Projet</a>
             </li>
-
-
             <!-- METTRE A DROITE-->
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
@@ -40,22 +39,20 @@
     </div>
 </nav>
 
+<footer id="footer" class="footer footer-expand-lg footer-light bg-light" th:fragment="footerbar">
+    <a> Restons en contact : </a>
+    <a href="http://www.facebook.com/">Facebook</a>
+    <a href="https://fr.linkedin.com/">LinkedIn</a>
+    <a href="http://www.twitter.com/">Twitter</a>
+    <a href="http://instagram.com/">Instagram</a>
+    <a href="http://www.localhost:8080/">Retour en Haut</a>
+    <a href="http://mentions-legales.fr">Mentions L&eacute;gales</a> -
+    <a href="/contact" target="_blank">Contacter</a>
+</footer>
 
-<nav class="footer " th:fragment="footer">
-    <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-</nav>
-
+<div th:fragment="backbtn" class="btn-group float-right m-3">
+    <a class="btn btn-primary" href="/">Back</a>
+</div>
 
 </body>
 </html>
