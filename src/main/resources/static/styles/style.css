@@ -18,7 +18,15 @@ body {
 .imgtext {
     float: left;
     margin: 0 6px 0 0;
+    height: 150px;
+    width: 200px;
 }
+
+.imgtable {
+    height: 30px;
+    width: 30px;
+}
+
 
 .centrer {
     display: block;
@@ -27,11 +35,12 @@ body {
 }
 
 table {
+    width: 100%;
     text-align: center;
 }
 
 td {
-    padding: 1rem 3rem;
+    padding-bottom: 2rem;
 }
 
 section {

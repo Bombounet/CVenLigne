@@ -13,7 +13,9 @@
 
     <div id="content-wrap">
         <section class="firstsection">
-            <h1>Je suis<br/>Ingénieur Numérique & Developpeur</h1>
+            <h1>Je suis <br />
+                <a style="font-size: 150%">Ingenieur Numerique & Developpeur </a>
+            </h1>
             <div class="divtext">
                 <p style="text-align: center">
                     Bienvenue sur mon CV en ligne. Je m'appelle
@@ -25,9 +27,8 @@
         <section>
             <h2>A PROPOS DE MOI</h2>
             <div class="divtext">
-                <img alt="woaw"
-                     class="imgtext" height="150"
-                     src="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_960_720.png" width="200"/>
+                <img alt="woaw" class="imgtext"
+                     src="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_960_720.png"/>
                 <p th:text="${user.email}">******</p>
                 <p th:text="${user.phoneNumber}">******</p>
                 <p th:text="${user.adresse.adress}">******</p>
@@ -40,33 +41,24 @@
         <section class="secondsection">
             <h2>MON PARCOURS</h2>
             <div class="divtext">
-                <div class="centrer">
-                    <table>
-                        <tr>
-                            <td>FORMATION</td>
-                            <td>EXPERIENCE</td>
-                            <td>COMPETENCES</td>
-                        </tr>
-                        <tr>
-                            <td><img alt="formation"
-                                     height="50"
-                                     src="\images\school.png" width="50"/></td>
-                            <td><img alt="experiences"
-                                     height="50"
-                                     src="\images\work.png" width="50"/></td>
-                            <td><img alt="compétences"
-                                     height="50"
-                                     src="\images\subject.png" width="50"/></td>
-                        </tr>
-                        <tr>
-                            <td>liste</td>
-                            <td>liste</td>
-                            <td>liste</td>
-                        </tr>
-                    </table>
-                </div>
+                <table>
+                    <tr>
+                        <td>FORMATION</td>
+                        <td>EXPERIENCE</td>
+                        <td>COMPETENCES</td>
+                    </tr>
+                    <tr>
+                        <td><img alt="formation" class="imgtable" href="/formations" src="\images\school.png"/></td>
+                        <td><img alt="experiences" class="imgtable" href="/experiences" src="\images\work.png"/></td>
+                        <td><img alt="compétences" class="imgtable" href="/competences" src="\images\subject.png"/></td>
+                    </tr>
+                    <tr>
+                        <td>liste</td>
+                        <td>liste</td>
+                        <td>liste</td>
+                    </tr>
+                </table>
             </div>
-            <a class="btn btn-outline-secondary" href="http://epf.fr">En savoir plus...</a>
         </section>
         <section>
             <h2>EXPERIENCE</h2>
@@ -89,6 +81,9 @@
 
     <div th:replace="template :: footerbar"></div>
 </div>
+
+<script src='http://www.loic-simon.fr/wp-content/themes/onepress/assets/js/theme.js?ver=1.3.0'
+        type='text/javascript'></script>
 </body>
 
 </html>
