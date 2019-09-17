@@ -28,91 +28,115 @@ public class LibraryController {
         return "see_index";
     }
 
-
-
     @GetMapping("/edit")
-    public String addUserPage(Model m) {
+    public String editHomePage(Model m) {
         m.addAttribute("user", userDAO.getUser());
         return "edit_index";
     }
 
     @PostMapping("/edit")
-    public RedirectView createNewUser(@ModelAttribute User user, RedirectAttributes attrs) {
+    public RedirectView majHomePage(@ModelAttribute User user, RedirectAttributes attrs) {
         userDAO.changeInfoIndex(user);
         return new RedirectView("/");
     }
 
-
-
-
-/*
-    @GetMapping("/edit")
-    public String homePageEdit(Model m) {
-        m.addAttribute("user", userDAO.getUser());
-      System.out.println("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        return "edit_index";
-    }
-
-
-
-  @PostMapping("/edit")
-  public RedirectView homePageEditSaveInfo(@ModelAttribute User user, RedirectAttributes attrs) {
-      attrs.addFlashAttribute("message", "Utilisateur ajouté avec succès");
-        System.out.println("liiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-    userDAO.changeInfo(user);
-    return new RedirectView("/");
-  }*/
-
-
-
+    /*------------------------------------------------------------------------------*/
 
     @GetMapping("/contact")
-    public String seeContact(Model m) {
-        return "contact";
+    public String contact(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "see_contact";
     }
 
-    @PostMapping("/contact")
-    public RedirectView closeContact() {
+    @GetMapping("/contact/edit")
+    public String editContact(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "edit_contact";
+    }
+
+    @PostMapping("/contact/edit")
+    public RedirectView majContact(@ModelAttribute User user, RedirectAttributes attrs) {
+        userDAO.changeInfoContact(user);
         return new RedirectView("/");
     }
+
+    /*------------------------------------------------------------------------------*/
 
     @GetMapping("/formations")
-    public String seeFormations() {
-        return "formations";
+    public String formations(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "see_formations";
     }
 
-    @PostMapping("/formations")
-    public RedirectView quitFormations() {
+    @GetMapping("/formations/edit")
+    public String editFormations(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "edit_formations";
+    }
+
+    @PostMapping("/formations/edit")
+    public RedirectView majFormations(@ModelAttribute User user, RedirectAttributes attrs) {
+        userDAO.changeInfoFormations(user);
         return new RedirectView("/");
     }
+
+    /*------------------------------------------------------------------------------*/
 
     @GetMapping("/experiences")
-    public String seeExperiences() {
-        return "experiences";
+    public String experiences(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "see_experiences";
     }
 
-    @PostMapping("/experiences")
-    public RedirectView quitExperiences() {
+    @GetMapping("/experiences/edit")
+    public String editExperiences(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "edit_experiences";
+    }
+
+    @PostMapping("/experiences/edit")
+    public RedirectView majExperiences(@ModelAttribute User user, RedirectAttributes attrs) {
+        userDAO.changeInfoExperiences(user);
         return new RedirectView("/");
     }
+
+    /*------------------------------------------------------------------------------*/
 
     @GetMapping("/competences")
-    public String seeCompetences() {
-        return "competences";
+    public String competences(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "see_competences";
     }
 
-    @PostMapping("/competences")
-    public RedirectView quitCompetences() {
+    @GetMapping("/competences/edit")
+    public String editCompetences(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "edit_competences";
+    }
+
+    @PostMapping("/competences/edit")
+    public RedirectView majCompetences(@ModelAttribute User user, RedirectAttributes attrs) {
+        userDAO.changeInfoCompetences(user);
         return new RedirectView("/");
     }
 
+    /*------------------------------------------------------------------------------*/
+
     @GetMapping("/projets")
-    public String seeProjets() {
-        return "projets";
+    public String projets(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "see_projets";
     }
 
-    @PostMapping("/projets")
-    public RedirectView quitProjet() {
+    @GetMapping("/projets/edit")
+    public String ediProjets(Model m) {
+        m.addAttribute("user", userDAO.getUser());
+        return "edit_projets";
+    }
+
+    @PostMapping("/projets/edit")
+    public RedirectView majProjets(@ModelAttribute User user, RedirectAttributes attrs) {
+        userDAO.changeInfoProjets(user);
         return new RedirectView("/");
     }
 
