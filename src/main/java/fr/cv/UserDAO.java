@@ -13,7 +13,7 @@ public interface UserDAO extends CrudRepository<User, Long> {
 }
 
 
-  public void changeInfoIndex(User newUser) {
+  /*public void changeInfoIndex(User newUser) {
     users.get(0).setFirstName(newUser.getFirstName());
     users.get(0).setLastName(newUser.getLastName());
   }
@@ -43,4 +43,4 @@ public interface UserDAO extends CrudRepository<User, Long> {
     users.get(0).setLastName(newUser.getLastName());
   }
 
-}
+}*/

@@ -11,7 +11,7 @@
 
 
         <div class="container">
-            <form method="post" th:action="@{/edit}" th:object="${user}">
+            <form method="post" th:action="@{'/edit/' + ${user.id}}" th:object="${user}">
                 <div class="form-group">
                     <label for="firstNameInput">First Name</label>
                     <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Enter first name">
