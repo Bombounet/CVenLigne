@@ -32,7 +32,7 @@ public class UserDAO {
     List<Projet> projets = new ArrayList<>();
     List<String> competences = new ArrayList<>();
     experiences.add(new Experience("Space engineer","2015-2020","NASA","i went to mars (2 times)"));
-    formations.add(new Formation("ENS Cachan", "2014", "Cachan","major student"));
+    formations.add(new Formation("Harvard", "2050", "US","bla bla"));
     formations.add(new Formation("ENS Cachan", "2014", "Cachan","major student"));
     formations.add(new Formation("EPF", "2015", "Sceaux","it"));
     projets.add(new Projet("Jeu en Java","2017","Montpellier EPF","we code a modified version of binding of Isaac named Binding of the PEUF, we code more than 3 days in a row"));

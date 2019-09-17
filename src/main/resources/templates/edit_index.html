@@ -7,103 +7,53 @@
 <div id="page-container">
     <div th:replace="template :: navbar"></div>
     <div id="content-wrap">
-        <div class="btn-group float-right m-3"><a href="/edit" class="btn btn-primary">EDIT</a></div>
 
 
         <div class="container">
             <form method="post" th:action="@{/edit}" th:object="${user}">
-                <div class="form-group">
-                    <label for="firstNameInput">First Name</label>
-                    <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Enter first name">
-                    <small id="firstNameHelp" class="form-text text-muted">Having a first name is always more convenient.</small>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="firstNameInput">First Name</label>
+                        <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput">
+                    </div>
+                    <div class="col">
+                        <label for="lastNameInput">Last Name</label>
+                        <input type="text" th:field="*{lastName}" class="form-control" id="lastNameInput">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastNameInput">Last Name</label>
-                    <input type="text" th:field="*{lastName}" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Enter last name">
-                    <small id="lastNameHelp" class="form-text text-muted">Having a last name is always more convenient.</small>
+                    <label for="bioInput">Bio</label>
+                    <input type="text" th:field="*{email}" class="form-control" id="bioInput">
                 </div>
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+
+
+                <div class="form-group">
+                    <label>Formation</label>
+                    <select class="custom-select">
+                        <option selected>Open this select menu</option>
+                        <option th:each="foarmation : ${user.formations}"><p th:text="${foarmation.name}"></p></option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Back</button>
             </form>
         </div>
 
 
-
-
-
-
-        <!--<div class="container">-->
-        <!--    <form method="post" th:action="@{/edit}" th:object="${user}">-->
-        <!--        <div class="form-group">-->
-        <!--            <label for="firstNameInput">First Name</label>-->
-        <!--            <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput"-->
-        <!--                   aria-describedby="firstNameHelp" placeholder="Enter first name">-->
-        <!--            <small id="firstNameHelp" class="form-text text-muted">Having a first name is always more-->
-        <!--                convenient.</small>-->
-        <!--        </div>-->
-        <!--        <div class="form-group">-->
-        <!--            <label for="lastNameInput">Last Name</label>-->
-        <!--            <input type="text" th:field="*{lastName}" class="form-control" id="lastNameInput"-->
-        <!--                   aria-describedby="lastNameHelp" placeholder="Enter last name">-->
-        <!--            <small id="lastNameHelp" class="form-text text-muted">Having a last name is always more convenient.</small>-->
-        <!--        </div>-->
-        <!--        <button type="submit" class="btn btn-primary">Ajouter</button>-->
-        <!--    </form>-->
-        <!--</div>-->
-
-
-
-
-
-
-
-        <!--<form method="post" th:action="@{/edit}" th:object="${user}">-->
-        <!--    <section id="names">-->
-        <!--        <div class="form-group">-->
-        <!--            <label for="firstNameInput">First Name</label>-->
-        <!--            <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput">-->
-        <!--        </div>-->
-        <!--        <div class="container">-->
-        <!--            <div class="section-title-area">-->
-        <!--                <h2 class="section-title">NOM</h2>-->
+        <!--        <section id="FORMATION">-->
+        <!--            <div class="container">-->
+        <!--                <div class="section-title-area">-->
+        <!--                    <h2 class="section-title">FORMATION</h2>-->
+        <!--                </div>-->
+        <!--                <div class="section-content">-->
+        <!--                    <select class="custom-select">-->
+        <!--                        <option selected>Open this select menu</option>-->
+        <!--                        <option th:each="foarmation : ${user.formations}"><p th:text="${foarmation.name}"></p></option>-->
+        <!--                    </select>-->
+        <!--                </div>-->
         <!--            </div>-->
-        <!--            <div class="section-content">-->
-        <!--                <input type="text" class="form-control" id="nom_form" th:value="${user.lastName}">-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--    </section>-->
-        <!--    <button type="submit" class="btn btn-primary">Ajouter</button>-->
-        <!--</form>-->
-
-        <!--<section id="BIO">-->
-        <!--    <div class="container">-->
-        <!--        <div class="section-title-area">-->
-        <!--            <h2 class="section-title">BIO</h2>-->
-        <!--        </div>-->
-        <!--        <div class="section-content">-->
-        <!--            <input type="text" class="form-control" id="bio_form" aria-describedby="emailHelp"-->
-        <!--                   value="A DEFINIR dans user">-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</section>-->
-
-
-        <!--<section id="FORMATION">-->
-        <!--    <div class="container">-->
-        <!--        <div class="section-title-area">-->
-        <!--            <h2 class="section-title">FORMATION</h2>-->
-        <!--        </div>-->
-
-
-        <!--        <div class="section-content">-->
-        <!--            <select class="custom-select">-->
-        <!--                <option selected>Open this select menu</option>-->
-        <!--                <option th:each="foarmation : ${user.formations}"><p th:text="${foarmation.name}"></p></option>-->
-        <!--            </select>-->
-        <!--        </div>-->
-
-
-        <!--    </div>-->
-        <!--</section>-->
+        <!--        </section>-->
 
 
         <!--<section id="EXPERIENCE">-->
@@ -145,7 +95,9 @@
         <!--        <button type="submit" class="btn btn-primary">Ajouter</button>-->
         <!--    </div>-->
         <!--</div>-->
-        <div th:replace="template :: backbtn"></div>
+
+
+        <!--        <div th:replace="template :: backbtn"></div>-->
     </div>
     <div th:replace="template :: footerbar"></div>
 </div>
