@@ -5,7 +5,10 @@
 
 <body>
 <div id="page-container">
-    <div th:replace="template :: navbar"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My CV</a>
+        <div th:replace="template :: navbar"></div>
+    </nav>
     <div id="content-wrap">
 
 
@@ -27,7 +30,6 @@
                     <label for="firstNameInput">First Name</label>
                     <input type="text" th:field="*{firstName}" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Enter first name">
                     <small id="firstNameHelp" class="form-text text-muted">Having a first name is always more convenient.</small>
-
                 </div>
                 <div class="form-group">
                     <label for="bioInput">Bio</label>

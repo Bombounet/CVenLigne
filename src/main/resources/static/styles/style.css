@@ -2,6 +2,7 @@ body {
     background-color: black;
     color: white;
 }
+
 .firstsection {
     background-image:url(/images/unicorn.jpg);
     /*background-image:url(http://media.paperblog.fr/i/667/6671820/fond-decran-ios-7-iphone-ipad-imac-L-92xdUE.jpeg);*/
@@ -9,24 +10,44 @@ body {
     color: black;
     text: bold;
 }
+
 .secondsection {
     background-color: #2B2B2B;
 }
+
 .imgtext {
-    float:left;
+    float: left;
     margin: 0 6px 0 0;
 }
+
+.centrer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    text-align: center;
+}
+
+td {
+    padding: 1rem 3rem;
+}
+
 section {
     padding: 3rem;
 }
+
 .divtext {
     padding-top: 2rem;
 }
-h1{
+
+h1 {
     text-align: center;
     font-size: 50px;
 }
-h2{
+
+h2 {
     text-align: center;
 }
 
@@ -36,7 +57,7 @@ h2{
 }
 
 #content-wrap {
-    padding-bottom: 2rem;    /* Footer height */
+    padding-bottom: 2rem; /* Footer height */
 }
 
 #footer {
@@ -44,5 +65,5 @@ h2{
     bottom: 0;
     width: 100%;
     text-align: center;
-    color: grey;
+    color: lightslategray;
 }

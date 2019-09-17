@@ -1,103 +1,94 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: headder"></head>
 
-<head>
-    <title>CV en Ligne</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-</head>
+<body>
+<div id="page-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My
+            CV</a>
+        <div th:replace="template :: navbar"></div>
+    </nav>
 
-<body style="background-color: darkslategrey; color: floralwhite;">
-
-
-<div th:replace="template :: navbar"></div>
-
-
-<div class="container">
-
-
-    <p>HOME</p>
-    <!--      <tbody>-->
-    <!--      <tr th:each="user : ${users}">-->
-    <!--        <td scope="row" th:text="${user.firstName}"></td>-->
-    <!--        <td th:text="${user.lastName}"></td>-->
-    <!--        <td th:text="${user.age}"></td>-->
-    <!--      </tr>-->
-    <!--      </tbody>-->
-
-    <div class="container">
-        <div class="btn-group float-right m-3">
-            <a href="/edit" class="btn btn-primary">EDIT</a>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <section id="NOM PRENOM">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title" th:text="${user.lastName} +' '+ ${user.firstName}"></h2>
+    <div id="content-wrap">
+        <section class="firstsection">
+            <h1>Je suis<br/>Ingénieur Numérique & Developpeur</h1>
+            <div class="divtext">
+                <p style="text-align: center">
+                    Bienvenue sur mon CV en ligne. Je m'appelle
+                    <a style="font-size:125%" th:text="${user.lastName} +' '+ ${user.firstName}"></a>
+                    et je vous propose d'en savoir un peu plus sur moi...
+                </p>
             </div>
-            <div class="section-content">
-                <p th:text="${user.bio}"></p>
-                <p th:text="${user.phoneNumber}"></p>
-                <p th:text="${user.adresse.adress}"></p>
-                <p th:text="${user.adresse.city} + ', '+ ${user.adresse.postcode}"></p>
-                <p th:text="${user.adresse.country}"></p>
-            </div>
-        </div>
-    </section>
-    <section id="BIO">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">BIO</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
+        </section>
+        <section>
+            <h2>A PROPOS DE MOI</h2>
+            <div class="divtext">
+                <img alt="woaw"
+                     class="imgtext" height="150"
+                     src="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_960_720.png" width="200"/>
+                <p th:text="${user.email}">******</p>
+                <p th:text="${user.phoneNumber}">******</p>
+                <p th:text="${user.adresse.adress}">******</p>
+                <p th:text="${user.adresse.city} + ', '+ ${user.adresse.postcode}">******</p>
+                <p th:text="${user.adresse.country}">******</p>
                 <p th:text="${user.birthMonth}+'/'+ ${user.birthDay} +'/'+${user.birthYear}"></p>
+                <a class="btn btn-outline-secondary" href="http://epf.fr">En savoir plus...</a>
             </div>
-        </div>
-    </section>
-    <section id="FORMATION">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">FORMATION</h2>
+        </section>
+        <section class="secondsection">
+            <h2>MON PARCOURS</h2>
+            <div class="divtext">
+                <div class="centrer">
+                    <table>
+                        <tr>
+                            <td>FORMATION</td>
+                            <td>EXPERIENCE</td>
+                            <td>COMPETENCES</td>
+                        </tr>
+                        <tr>
+                            <td><img alt="formation"
+                                     height="50"
+                                     src="\images\school.png" width="50"/></td>
+                            <td><img alt="experiences"
+                                     height="50"
+                                     src="\images\work.png" width="50"/></td>
+                            <td><img alt="compétences"
+                                     height="50"
+                                     src="\images\subject.png" width="50"/></td>
+                        </tr>
+                        <tr>
+                            <td>liste</td>
+                            <td>liste</td>
+                            <td>liste</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="section-content">
+            <a class="btn btn-outline-secondary" href="http://epf.fr">En savoir plus...</a>
+        </section>
+        <section>
+            <h2>EXPERIENCE</h2>
+            <div class="divtext">
                 <p>Bla <strong>Bla </strong>Bla</p>
                 <p>Bla Bla Bla</p>
             </div>
-        </div>
-    </section>
-    <section id="EXPERIENCE">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">EXPERIENCE</h2>
-            </div>
-            <div class="section-content">
+            <a class="btn btn-outline-secondary" href="http://epf.fr">En savoir plus...</a>
+        </section>
+        <section class="secondsection">
+            <h2>COMPETENCES</h2>
+            <div class="divtext">
                 <p>Bla <strong>Bla </strong>Bla</p>
                 <p>Bla Bla Bla</p>
             </div>
-        </div>
-    </section>
-    <section id="COMPETENCES">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">COMPETENCES</h2>
-            </div>
-            <div class="section-content">
-                <p>Bla <strong>Bla </strong>Bla</p>
-                <p>Bla Bla Bla</p>
-            </div>
-        </div>
-    </section>
+            <a class="btn btn-outline-secondary" href="http://epf.fr">En savoir plus...</a>
+        </section>
+        <a class="btn btn-outline-secondary" href="/edit">Edit</a>
+    </div>
+
+    <div th:replace="template :: footerbar"></div>
 </div>
-
-
-<div th:replace="template :: footer"></div>
-
 </body>
 
 </html>
