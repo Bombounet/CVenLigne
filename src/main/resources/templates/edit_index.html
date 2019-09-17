@@ -1,116 +1,85 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head>
-    <title>CV en Ligne</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-</head>
+<head th:replace="template :: headder"></head>
 
-<body style="background-color: darkslategrey; color: floralwhite;">
+<body>
+<div id="page-container">
 
-
-<div th:replace="template :: navbar"></div>
-
-
-<div class="container">
-
-
-
-    <p>HOME</p>
-    <!--      <tbody>-->
-    <!--      <tr th:each="user : ${users}">-->
-    <!--        <td scope="row" th:text="${user.firstName}"></td>-->
-    <!--        <td th:text="${user.lastName}"></td>-->
-    <!--        <td th:text="${user.age}"></td>-->
-    <!--      </tr>-->
-    <!--      </tbody>-->
-
-
-</div>
-
-<div class="container">
-    <section id="NOM PRENOM">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">NOM PRENOM</h2>
-            </div>
-            <div class="section-content">
-                <input type="text" class="form-control" id="nom_prenom_form" aria-describedby="emailHelp" value="Bla Bla Bla">
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="BIO">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">BIO</h2>
-            </div>
-            <div class="section-content">
-                <input type="text" class="form-control" id="bio_form" aria-describedby="emailHelp" value="Bla Bla Bla">
-            </div>
-        </div>
-    </section>
-    <section id="FORMATION">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">FORMATION</h2>
-            </div>
-            <div class="section-content">
-                <input type="text" class="form-control" id="formation_form" aria-describedby="emailHelp" value="Bla Bla Bla">
-            </div>
-        </div>
-    </section>
-    <section id="EXPERIENCE">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">EXPERIENCE</h2>
-            </div>
-            <div class="section-content">
-                <input type="text" class="form-control" id="experiences_form" aria-describedby="emailHelp" value="Bla Bla Bla">
-            </div>
-        </div>
-
-    </section>
-    <section id="COMPETENCES">
-        <div class="container">
-            <div class="section-title-area">
-                <h2 class="section-title">COMPETENCES</h2>
-            </div>
-            <div class="section-content">
-                <input type="text" class="form-control" id="competences_form" aria-describedby="emailHelp" value="Bla Bla Bla">
-            </div>
-        </div>
-    </section>
-</div>
-
-<form>
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <div th:replace="template :: navbar"></div>
+    <div class="container">
+        <p>HOME</p>
     </div>
-</form>
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="btn-group float-right m-3">
-        <a href="/edit" class="btn btn-primary">Back</a>
+    <div class="container">
+        <section id="NOM PRENOM">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title">NOM PRENOM</h2>
+                </div>
+                <div class="section-content">
+                    <input aria-describedby="emailHelp" class="form-control" id="nom_prenom_form" type="text"
+                           value="Bla Bla Bla">
+                </div>
+            </div>
+        </section>
+        <section id="BIO">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title">BIO</h2>
+                </div>
+                <div class="section-content">
+                    <input aria-describedby="emailHelp" class="form-control" id="bio_form" type="text"
+                           value="Bla Bla Bla">
+                </div>
+            </div>
+        </section>
+        <section id="FORMATION">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title">FORMATION</h2>
+                </div>
+                <div class="section-content">
+                    <input aria-describedby="emailHelp" class="form-control" id="formation_form" type="text"
+                           value="Bla Bla Bla">
+                </div>
+            </div>
+        </section>
+        <section id="EXPERIENCE">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title">EXPERIENCE</h2>
+                </div>
+                <div class="section-content">
+                    <input aria-describedby="emailHelp" class="form-control" id="experiences_form" type="text"
+                           value="Bla Bla Bla">
+                </div>
+            </div>
+        </section>
+        <section id="COMPETENCES">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title">COMPETENCES</h2>
+                </div>
+                <div class="section-content">
+                    <input aria-describedby="emailHelp" class="form-control" id="competences_form" type="text"
+                           value="Bla Bla Bla">
+                </div>
+            </div>
+        </section>
     </div>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input class="form-control-file" id="exampleFormControlFile1" type="file">
+        </div>
+    </form>
+    <div class="container">
+        <div class="btn-group float-right m-3">
+            <a class="btn btn-primary" href="/edit">Back</a>
+        </div>
+    </div>
+    <div th:replace="template :: footerbar"></div>
 </div>
-
-
-<div th:replace="template :: footer"></div>
-
 </body>
-
 </html>
