@@ -10,8 +10,12 @@ data class Experience(
         var name: String?,
         var year: String?,
         var place: String?,
-        var description: String? ){
+        var description: String?,
 
-        constructor() : this(null,null,null,null,null)
+        @ManyToOne
+        var user: User?
+){
+
+        constructor() : this(null,null,null,null,null, null)
 
 }

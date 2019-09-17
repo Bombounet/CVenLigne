@@ -22,13 +22,13 @@ data class User(
 
         var phoneNumber: Int?,
 
-        @OneToMany
+        @OneToMany(mappedBy="user")
         var experiences: List<Experience>?,
 
-        @OneToMany
+        @OneToMany(mappedBy="user")
         var formations: List<Formation>?,
 
-        @OneToMany
+        @OneToMany(mappedBy="user")
         var projets: List<Projet>?,
 
         @ManyToMany
