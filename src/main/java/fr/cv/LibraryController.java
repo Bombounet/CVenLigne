@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 /**
  *
  */
@@ -24,7 +26,10 @@ public class LibraryController {
 
   @GetMapping
   public String homePage(Model m) {
-    m.addAttribute("user", userDAO.getUser());
+    long Id = 1;
+    List <User> users  = (List<User>) userDAO.findAll();
+    User user = users.get(0);
+    m.addAttribute("user", user);
     return "see_index";
   }
 
