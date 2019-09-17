@@ -17,7 +17,8 @@ create table experiences
     place TEXT not null,
     description TEXT not null,
     year TEXT null,
-    user_id bigint not null
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES experiences(id)
 );
 create table competences
 (
@@ -35,7 +36,8 @@ create table formations
     place TEXT not null,
     description TEXT not null,
     year TEXT null,
-    user_id bigint not null
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES formations(id)
 );
 create table projets
 (
@@ -46,7 +48,8 @@ create table projets
     place TEXT not null,
     description TEXT not null,
     year TEXT null,
-    user_id bigint not null
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES projets(id)
 );
 create table users
 (
