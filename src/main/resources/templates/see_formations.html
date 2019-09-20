@@ -11,6 +11,13 @@
     </nav>
     <div id="content-wrap">
         <p>FORMATION</p>
+        <p th:each="formations, itemStat : ${user.formations}">
+            <a th:text="${formations.name}"/> </a>
+            <a th:text="${formations.year}"/> </a>
+            <a th:text="${formations.place}"/> </a>
+            </br>
+            <a th:text="${formations.description}"/> </a>
+        </p>
         <div th:replace="template :: backbtn"></div>
     </div>
     <div th:replace="template :: footerbar"></div>

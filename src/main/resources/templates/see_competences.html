@@ -11,6 +11,9 @@
     </nav>
     <div id="content-wrap">
         <p>COMPETENCES</p>
+        <p th:each="competences, itemStat : ${user.competences}">
+            <a th:text="${competences.name}"/> </a>
+        </p>
         <div th:replace="template :: backbtn"></div>
     </div>
     <div th:replace="template :: footerbar"></div>
