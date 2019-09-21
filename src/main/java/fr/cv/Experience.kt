@@ -1,10 +1,8 @@
-package experiencesfr.cv
+package fr.cv
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import fr.cv.User
 import javax.persistence.*
 
-@Entity(name ="")
+@Entity(name ="experiences")
 data class Experience(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,

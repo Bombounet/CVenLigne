@@ -1,6 +1,5 @@
 package fr.cv
 
-import experiencesfr.cv.Experience
 import javax.persistence.*
 
 /**
@@ -32,10 +31,7 @@ data class User(
         @OneToMany(mappedBy="user")
         var projets: List<Projet>?,
 
-        @ManyToMany
-        @JoinTable( name = "users_competences",
-                joinColumns = arrayOf(JoinColumn(name = "user_id", referencedColumnName = "id")),
-                inverseJoinColumns = arrayOf(JoinColumn(name = "competences_id", referencedColumnName = "id")))
+        @OneToMany(mappedBy="user")
         var competences: List<Competence>?) {
 
 
