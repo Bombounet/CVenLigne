@@ -11,6 +11,10 @@
     </nav>
     <div id="content-wrap">
         <p>FORMATION</p>
+
+        <div>
+            <a class="btn btn-outline-secondary" href="/formations/edit">Edit</a>
+        </div>
         <p th:each="formations, itemStat : ${user.formations}">
             <a th:text="${formations.name}"/> </a>
             <a th:text="${formations.year}"/> </a>

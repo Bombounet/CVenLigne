@@ -6,17 +6,26 @@
 <body>
 <div id="page-container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My
-            CV</a>
+        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My CV</a>
         <div th:replace="template :: navbar"></div>
     </nav>
+
     <div id="content-wrap">
         <div class="container">
-            <form method="post" th:action="@{/contact/edit}" th:object="${user.adresse}">
+            <form method="post" th:action="@{'/contact/edit/' + ${user.id}}" th:object="${user.contact}">
                 <div class="form-group">
-                    <label for="AdresseInput">Adresse</label>
-                    <input type="text" th:field="*{adress}" class="form-control" id="AdresseInput">
+                    <label for="emailInput">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="emailInput">
                 </div>
+                <div class="form-group">
+                    <label for="phoneNumberInput">Numéro de téléphone</label>
+                    <input type="text" th:field="*{phoneNumber}" class="form-control bfh-phone" data-country="FR" id="phoneNumberInput">
+                </div>
+                <div class="form-group">
+                    <label for="addressInput">Adresse</label>
+                    <input type="text" th:field="*{address}" class="form-control" id="addressInput">
+                </div>
+
                 <div class="form-row">
                     <div class="col-7">
                         <label for="cityInput">Ville</label>
@@ -31,7 +40,8 @@
                         <input type="text" th:field="*{country}" class="form-control" id="countryInput">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Back</button>
+
+                <button type="submit" class="btn-group float-right m-3">Back</button>
             </form>
         </div>
         <!--        <div th:replace="template :: backbtn"></div>-->

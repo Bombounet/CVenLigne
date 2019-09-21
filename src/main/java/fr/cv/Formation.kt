@@ -10,6 +10,7 @@ data class Formation(
         var year: String?,
         var place: String?,
         var description: String?,
+
         @ManyToOne
         var user: User?){
         constructor() : this(null, null,null,null,null,null)
