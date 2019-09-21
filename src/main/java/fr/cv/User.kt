@@ -14,13 +14,10 @@ data class User(
         var birthMonth: Int?,
         var birthDay: Int?,
         var birthYear: Int?,
-        var email: String?,
         var bio: String?,
 
         @Embedded
-        var adresse: Adresse?,
-
-        var phoneNumber: Int?,
+        var contact: Contact?,
 
         @OneToMany(mappedBy="user")
         var experiences: List<Experience>?,
@@ -38,6 +35,6 @@ data class User(
         var competences: List<Competence>?) {
 
 
-        constructor() : this(null, null,null,null,null,null,null,null,null,null,null,null,null,null)
+        constructor() : this(null,null,null,null,null,null,null,null,null,null,null,null)
 
 }
