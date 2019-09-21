@@ -6,7 +6,8 @@ import javax.persistence.*
 data class Competence(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id var id: Long?,
-
-        var name: String?){
-        constructor() : this(null,null)
+        var name: String?,
+        @ManyToOne
+        var user: User?){
+        constructor() : this(null,null,null)
 }
