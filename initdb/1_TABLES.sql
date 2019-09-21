@@ -14,7 +14,9 @@ create table competences(
     id bigint auto_increment,
     constraint competences_pk
         primary key (id),
-    competence TEXT not null
+    name TEXT not null,
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES competences(id)
 );
 
 create table formations(
@@ -57,12 +59,5 @@ create table users(
     city TEXT not null,
     country TEXT not null,
     postcode int null
-);
 
-create table users_competences(
-    id bigint auto_increment,
-    constraint users_competences_pk
-        primary key (id),
-    user_id bigint not null,
-    competences_id bigint not null
 );

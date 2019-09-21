@@ -53,23 +53,29 @@
                         <td><a href="/competences"><img alt="formation" class="imgtable" src="\images\subject.png"/></a>
                         </td>
                     </tr>
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <table>-->
-<!--                                <tr th:each="formations : ${user.formations}"></tr>-->
-<!--                            </table>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <table>-->
-<!--                                <tr th:each="experiences : ${user.experiences}"></tr>-->
-<!--                            </table>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <table>-->
-<!--                                <tr th:each="competences : ${user.competences}"></tr>-->
-<!--                            </table>-->
-<!--                        </td>-->
-<!--                    </tr>-->
+                    <tr>
+                        <td>
+                            <p th:each="formations, itemStat : ${user.formations}">
+                                <a th:text="${formations.name}"/> </a>
+                                <a th:text="${formations.year}"/> </a>
+                                <a th:text="${formations.place}"/> </a>
+                                </br>
+                            </p>
+                        </td>
+                        <td>
+                            <p th:each="experiences, itemStat : ${user.experiences}">
+                                <a th:text="${experiences.name}"/> </a>
+                                <a th:text="${experiences.year}"/> </a>
+                                <a th:text="${experiences.place}"/> </a>
+                                </br>
+                            </p>
+                        </td>
+                        <td>
+                           <p th:each="competences, itemStat : ${user.competences}">
+                                <a th:text="${competences.name}"/> </a>
+                            </p>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </section>
