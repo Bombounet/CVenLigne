@@ -1,5 +1,6 @@
 package fr.cv
 
+import experiencesfr.cv.Experience
 import javax.persistence.*
 
 /**
