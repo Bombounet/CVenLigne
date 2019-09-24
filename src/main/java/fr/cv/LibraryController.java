@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.sql.SQLOutput;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -24,6 +26,7 @@ public class LibraryController {
   @GetMapping
   public String homePage(Model m) {
     m.addAttribute("user", getUser(1));
+    System.out.println(getUser(1).getFormations().get(0).getName());
     return "see_index";
   }
 
@@ -79,11 +82,50 @@ public class LibraryController {
     return "edit_formations";
   }
 
-  @PostMapping("/formations/edit")
+ /* @PostMapping("/formations/edit/{id}")
   public RedirectView majFormations(@ModelAttribute User newData, @PathVariable String id, RedirectAttributes attrs) {
-      User user = getUser(1);
+    User user = getUser(1);
     userDAO.save(user);
     return new RedirectView("/");
+  }
+
+  @PostMapping("/formations/edit/{id}")
+  public RedirectView editFormations(@ModelAttribute User newData, @PathVariable String id, RedirectAttributes attrs) {
+    User user = getUser(1);
+    userDAO.save(user);
+    return new RedirectView("/");
+  }*/
+
+  @PostMapping("/formations/remove/{id}")
+  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) {
+    System.out.println("laaaaaaaaaa");
+    User user = userDAO.findById(id).get();
+    System.out.println(user.getFormations().get((int)id - 1).getName());
+
+    List<Formation> formations = user.getFormations();
+    formations.remove((int) id -1);
+    System.out.println(user.getFormations().get((int)id - 1).getName());
+
+
+    userDAO.save(user);
+
+    return new RedirectView("/");
+  }
+
+  @GetMapping("/formations/edit/add")
+  public String add(Model m) {
+    User user = userDAO.findById(new Long(1)).get();
+    int id = 1;
+    long ID = id;
+    Formation formation = new Formation( ID, "EPS", "2050" , "mtp", "BLOBLO ", user);
+    user.getFormations().add(formation);
+    for (int i = 0; i < user.getFormations().size() ; i++){
+      System.out.println(user.getFormations().get(i).getName());
+    }
+
+    userDAO.save(user);
+
+    return "add";
   }
 
   /*------------------------------------------------------------------------------*/
@@ -100,8 +142,8 @@ public class LibraryController {
     return "edit_experiences";
   }
 
-  @PostMapping("/experiences/edit")
-  public RedirectView majExperiences(@ModelAttribute User user, RedirectAttributes attrs) {
+  @PostMapping("/experiences/edit/{id}")
+  public RedirectView majExperiences(@ModelAttribute User user, @PathVariable String id, RedirectAttributes attrs) {
     //userDAO.changeInfoExperiences(user);
     userDAO.save(user);
     return new RedirectView("/");
@@ -142,8 +184,8 @@ public class LibraryController {
     return "edit_projets";
   }
 
-  @PostMapping("/projets/edit")
-  public RedirectView majProjets(@ModelAttribute User user, RedirectAttributes attrs) {
+  @PostMapping("/projets/edit/{id}")
+  public RedirectView majProjets(@ModelAttribute User user, @PathVariable String id, RedirectAttributes attrs) {
     //userDAO.changeInfoProjets(user);
     userDAO.save(user);
     return new RedirectView("/");

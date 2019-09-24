@@ -10,8 +10,7 @@
         <div th:replace="template :: navbar"></div>
     </nav>
     <div id="content-wrap">
-        <div class="container">
-            <form method="post" th:action="@{'/formations/edit/' + ${user.id}}" th:object="${formations}">
+        <div class="container" th:object="${formations}">
 
 
 <!--                <ul th:each="formation : ${user.formations}">-->
@@ -24,10 +23,14 @@
                         <label th:text="${formation.name}+' '+ ${formation.year}">Formation</label>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn-group float-right m-3">Back</button>
+                        <form method="post" th:action="@{'/formations/edit/' + ${formation.id}}">
+                            <button type="submit" class="btn-group float-right m-3">Edit</button>
+                        </form>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn-group float-right m-3">Back</button>
+                        <form method="post" th:action="@{'/formations/remove/' + ${formation.id}}">
+                            <button type="submit" class="btn-group float-right m-3">Remove</button>
+                        </form>
                     </div>
 
                 </div>
@@ -56,8 +59,7 @@
 
 
 
-                <button type="submit" class="btn-group float-right m-3">Back</button>
-            </form>
+                <a class="btn-group float-right m-3" href="/formations/edit/add">Add</a>
         </div>
         <!--        <div th:replace="template :: backbtn"></div>-->
     </div>
