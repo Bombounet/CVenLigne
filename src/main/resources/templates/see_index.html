@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="template :: headder"></head>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: headder">
+</head>
 
 <body>
 <div id="page-container">
@@ -17,7 +19,7 @@
             <div class="divtext">
                 <p style="text-align: center">
                     Bienvenue sur mon CV en ligne. Je m'appelle
-                    <a style="font-size:125%" th:text="${user.lastName} +' '+ ${user.firstName}"></a>
+                    <a style="font-size:125%" th:text="${user.firstName} +' '+ ${user.lastName}"></a>
                     et je vous propose d'en savoir un peu plus sur moi...
                 </p>
             </div>
@@ -27,13 +29,15 @@
             <div class="divtext">
                 <img alt="woaw" class="imgtext"
                      src="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_960_720.png"/>
-                <p th:text="${user.contact.email}">******</p>
-                <p th:text="${user.contact.phoneNumber}">******</p>
-                <p th:text="${user.contact.address}">******</p>
-                <p th:text="${user.contact.city} + ', '+ ${user.contact.postcode}">******</p>
-                <p th:text="${user.contact.country}">******</p>
-                <p th:text="${user.birthMonth}+'/'+ ${user.birthDay} +'/'+${user.birthYear}"></p>
-                <a class="btn btn-outline-secondary" href="http://epf.fr">Qui suis-je ?</a>
+                <a th:text="${user.bio}"></a></br>
+                <p>
+                    </br>En savoir plus sur moi :
+                    <br>
+                    Je suis née le :
+                    <a th:text="${user.birthDay}+'/'+ ${user.birthMonth} +'/'+${user.birthYear}"></a>
+                </p>
+
+                </br>
             </div>
         </section>
         <section class="secondsection">
@@ -44,35 +48,42 @@
                         <td>FORMATION</td>
                         <td>EXPERIENCE</td>
                         <td>COMPETENCES</td>
+                        <td>PROJETS</td>
                     </tr>
                     <tr>
-                        <td><a href="/formations"><img alt="formation" class="imgtable" src="\images\school.png"/></a>
-                        </td>
-                        <td><a href="/experiences"><img alt="formation" class="imgtable" src="\images\work.png"/></a>
-                        </td>
-                        <td><a href="/competences"><img alt="formation" class="imgtable" src="\images\subject.png"/></a>
-                        </td>
+                        <td><a href="/formations"><img alt="formation" class="imgtable" src="\images\school.png"/></a></td>
+                        <td><a href="/experiences"><img alt="experience" class="imgtable" src="\images\work.png"/></a></td>
+                        <td><a href="/competences"><img alt="competence" class="imgtable" src="\images\subject.png"/></a></td>
+                        <td><a href="/projets"><img alt="projets" class="imgtable" src="\images\smalllist.png"/></a></td>
                     </tr>
                     <tr>
                         <td>
                             <p th:each="formations, itemStat : ${user.formations}">
-                                <a th:text="${formations.name}"/> </a>
-                                <a th:text="${formations.year}"/> </a>
-                                <a th:text="${formations.place}"/> </a>
+                                <a class="date" th:text="${formations.year}"> </a>
+                                </br><strong><a th:text="${formations.name}"> </a></strong></br>
+                                <a th:text="${formations.place}"> </a>
                                 </br>
                             </p>
                         </td>
                         <td>
                             <p th:each="experiences, itemStat : ${user.experiences}">
-                                <a th:text="${experiences.name}"/> </a>
-                                <a th:text="${experiences.year}"/> </a>
-                                <a th:text="${experiences.place}"/> </a>
+                                <a class="date"th:text="${experiences.year}"> </a>
+                                </br><strong><a th:text="${experiences.name}"/> </a></strong></br>
+                                <a th:text="${experiences.place}"> </a>
                                 </br>
                             </p>
                         </td>
                         <td>
-                           <p th:each="competences, itemStat : ${user.competences}">
-                                <a th:text="${competences.name}"/> </a>
+                            <p th:each="competences, itemStat : ${user.competences}">
+                                <a th:text="${competences.name}"> </a>
+                            </p>
+                        </td>
+                        <td>
+                            <p th:each="projets, itemStat : ${user.projets}">
+                                <a class="date" th:text="${projets.year}">*</a>
+                                </br><strong><a th:text="${projets.name}">*</a></strong></br>
+                                <a th:text="${projets.place}"> </a>
+                                </br>
                             </p>
                         </td>
                     </tr>
