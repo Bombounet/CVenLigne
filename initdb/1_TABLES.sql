@@ -1,48 +1,3 @@
-create table experiences(
-    id bigint auto_increment,
-    constraint experiences_pk
-        primary key (id),
-    name TEXT not null,
-    place TEXT not null,
-    description TEXT not null,
-    year TEXT null,
-    user_id bigint not null,
-    FOREIGN KEY (user_id) REFERENCES experiences(id)
-);
-
-create table competences(
-    id bigint auto_increment,
-    constraint competences_pk
-        primary key (id),
-    name TEXT not null,
-    user_id bigint not null,
-    FOREIGN KEY (user_id) REFERENCES competences(id)
-);
-
-create table formations(
-    id bigint auto_increment,
-    constraint formation_pk
-        primary key (id),
-    name TEXT not null,
-    place TEXT not null,
-    description TEXT not null,
-    year TEXT null,
-    user_id bigint not null,
-    FOREIGN KEY (user_id) REFERENCES formations(id)
-);
-
-create table projets(
-    id bigint auto_increment,
-    constraint formation_pk
-        primary key (id),
-    name TEXT not null,
-    place TEXT not null,
-    description TEXT not null,
-    year TEXT null,
-    user_id bigint not null,
-    FOREIGN KEY (user_id) REFERENCES projets(id)
-);
-
 create table users(
     id bigint auto_increment,
     constraint users_pk
@@ -61,3 +16,50 @@ create table users(
     postcode int null
 
 );
+
+create table experiences(
+    id bigint auto_increment,
+    constraint experiences_pk
+        primary key (id),
+    name TEXT not null,
+    place TEXT not null,
+    description TEXT not null,
+    year TEXT null,
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+create table competences(
+    id bigint auto_increment,
+    constraint competences_pk
+        primary key (id),
+    name TEXT not null,
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+create table formations(
+    id bigint auto_increment,
+    constraint formation_pk
+        primary key (id),
+    name TEXT not null,
+    place TEXT not null,
+    description TEXT not null,
+    year TEXT null,
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+create table projets(
+    id bigint auto_increment,
+    constraint formation_pk
+        primary key (id),
+    name TEXT not null,
+    place TEXT not null,
+    description TEXT not null,
+    year TEXT null,
+    user_id bigint not null,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+

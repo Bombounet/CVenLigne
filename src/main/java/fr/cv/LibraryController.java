@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.sql.SQLOutput;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,35 +96,40 @@ public class LibraryController {
     return new RedirectView("/");
   }*/
 
-  @PostMapping("/formations/remove/{id}")
-  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) {
-    System.out.println("laaaaaaaaaa");
-    User user = userDAO.findById(id).get();
-    System.out.println(user.getFormations().get((int)id - 1).getName());
+  @PostMapping("/formations/edit/remove/{id}")
+  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) throws SQLException {
 
-    List<Formation> formations = user.getFormations();
-    formations.remove((int) id -1);
-    System.out.println(user.getFormations().get((int)id - 1).getName());
-
-
-    userDAO.save(user);
-
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    // create a Statement from the connection
+    Statement statement = conn.createStatement();
+    // insert the data
+    statement.executeUpdate("delete from formations where id = 1");
+    System.out.println("laaaa");
     return new RedirectView("/");
   }
 
   @GetMapping("/formations/edit/add")
-  public String add(Model m) {
+  public String add(Model m) throws SQLException {
     User user = userDAO.findById(new Long(1)).get();
-    int id = 1;
+    int id = 3;
     long ID = id;
-    Formation formation = new Formation( ID, "EPS", "2050" , "mtp", "BLOBLO ", user);
-    user.getFormations().add(formation);
+    //Formation formation = new Formation( ID, "EPS", "2050" , "mtp", "BLOBLO ", user);
+    //user.getFormations().add(formation);
+
     for (int i = 0; i < user.getFormations().size() ; i++){
       System.out.println(user.getFormations().get(i).getName());
     }
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    // create a Statement from the connection
+    Statement statement = conn.createStatement();
+    // insert the data
+    statement.executeUpdate("INSERT INTO formations " + "VALUES (ID, 'EPS', '2050', 'mtp', 'balbval', 1)");
+
 
     userDAO.save(user);
-
+    System.out.println("laaaa2");
     return "add";
   }
 
