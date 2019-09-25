@@ -26,7 +26,7 @@ public class LibraryController {
   @GetMapping
   public String homePage(Model m) {
     m.addAttribute("user", getUser(1));
-    System.out.println(getUser(1).getFormations().get(0).getName());
+    //System.out.println(getUser(1).getFormations().get(0).getName());
     return "see_index";
   }
 
@@ -63,7 +63,25 @@ public class LibraryController {
   public RedirectView majContact(@ModelAttribute User newData, @PathVariable String id, RedirectAttributes attrs) {
     User user = getUser(1);
     user.setContact(newData.getContact());
+
+    List<Formation> formations = user.getFormations();
+
+    //formations.get(0).setName("BLA");
+
+
+    long ID = formations.size();
+    Formation fo = new Formation(ID, "FO", "2020", "la", "blabla",user);
+    formations.add(fo);
+
+    user.setFormations(formations);
+
+
     userDAO.save(user);
+
+    System.out.println("Formations dans le User: ");
+    for(int i = 0 ; i < user.getFormations().size() ; i++){
+      System.out.println(user.getFormations().get(i).getName());
+    }
     return new RedirectView("/");
   }
 
@@ -100,32 +118,36 @@ public class LibraryController {
   public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) {
     System.out.println("laaaaaaaaaa id = " + id);
     User user = userDAO.findById(id).get();
-    System.out.println("Formations : ");
+    System.out.println("Formations dans le User: ");
     for(int i = 0 ; i < user.getFormations().size() ; i++){
       System.out.println(user.getFormations().get(i).getName());
     }
-    System.out.println("Del : " + user.getFormations().get((int)id - 1).getName());
+    System.out.println("ID et nom de la formation qui vas etre Delete : " + id + " + " + user.getFormations().get((int)id - 1).getName());
+    System.out.println();
 
     List<Formation> formations = user.getFormations();
-    System.out.println("Formations : avant del");
+    System.out.println("Creation list Formations = User.getFormation()");
     for(int i = 0 ; i < formations.size() ; i++){
       System.out.println(formations.get(i).getName());
-    }
+    }System.out.println();
+
     formations.remove((int) id -1);
-    System.out.println("Formations : apres del");
+    System.out.println("Formation remove dans la list");
     for(int i = 0 ; i < formations.size() ; i++){
       System.out.println(formations.get(i).getName());
-    }
+    }System.out.println();
+
     user.setFormations(formations);
-    System.out.println("Formations : formation -> user");
+    System.out.println("On met la liste dans le User : user.setFormations(formations);");
     for(int i = 0 ; i < user.getFormations().size() ; i++){
       System.out.println(user.getFormations().get(i).getName());
-    }
+    }System.out.println();
+
     userDAO.save(user);
-    System.out.println("Formations : save");
+    System.out.println("Save du User : userDAO.save(user); - taille de user.getFormations().size() : " + user.getFormations().size());
     for(int i = 0 ; i < user.getFormations().size() ; i++){
       System.out.println(user.getFormations().get(i).getName());
-    }
+    }System.out.println("FINNNNNNNNNNNNNNNNN de @PostMapping");System.out.println();
 
     return new RedirectView("/");
   }
