@@ -18,22 +18,20 @@
 <!--                </ul>-->
 
 
-                <div class="form-row" th:each="experience : ${experiences}">-->
-                    <div class="col-7">
-                        <label th:text="${experience.name}+' '+ ${experience.year}">Formation</label>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/experiences/edit/' + ${experience.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Edit</button>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/experiences/edit/remove/' + ${experience.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Remove</button>
-                        </form>
-                    </div>
-
+            <div class="form-row" th:each="experience : ${experiences}">-->
+                <div class="col-7">
+                    <label th:text="${experience.name}+' '+ ${experience.year}">Formation</label>
                 </div>
+                <div class="col">
+                    <a class="btn btn-outline-secondary" th:href="'/experiences/add/' + ${experience.id}">Edit</a>
+                </div>
+                <div class="col">
+                    <form method="post" th:action="@{'/experiences/edit/remove/' + ${experience.id}}">
+                        <button type="submit" class="btn-group float-right m-3">Remove</button>
+                    </form>
+                </div>
+
+            </div>
 
 <!--                <div class="form-row" th:each="formation : ${formations}">-->
 <!--                    <div class="col-7">-->
@@ -59,7 +57,7 @@
 
 
 
-                <a class="btn-group float-right m-3" href="/formations/edit/add">Add</a>
+                <a class="btn-group float-right m-3" href="/experiences/edit/add">Add</a>
         </div>
         <!--        <div th:replace="template :: backbtn"></div>-->
     </div>

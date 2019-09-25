@@ -18,23 +18,20 @@
 <!--                </ul>-->
 
 
-                <div class="form-row" th:each="projet : ${projets}">-->
-                    <div class="col-7">
-                        <label th:text="${projet.name}+' '+ ${projet.year}">Formation</label>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/projets/edit/' + ${projet.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Edit</button>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/projets/edit/remove/' + ${projet.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Remove</button>
-                        </form>
-                    </div>
-
+            <div class="form-row" th:each="projet : ${projets}">-->
+                <div class="col-7">
+                    <label th:text="${projet.name}+' '+ ${projet.year}">Formation</label>
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-secondary" th:href="'/projets/add/' + ${projet.id}">Edit</a>
+                </div>
+                <div class="col">
+                    <form method="post" th:action="@{'/projets/edit/remove/' + ${projet.id}}">
+                        <button type="submit" class="btn-group float-right m-3">Remove</button>
+                    </form>
                 </div>
 
+            </div>
 <!--                <div class="form-row" th:each="formation : ${formations}">-->
 <!--                    <div class="col-7">-->
 <!--                        <label for="nameInput">Nom</label>-->
@@ -59,7 +56,7 @@
 
 
 
-                <a class="btn-group float-right m-3" href="/formations/edit/add">Add</a>
+                <a class="btn-group float-right m-3" href="/projets/edit/add">Add</a>
         </div>
         <!--        <div th:replace="template :: backbtn"></div>-->
     </div>
