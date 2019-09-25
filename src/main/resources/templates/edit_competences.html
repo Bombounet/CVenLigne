@@ -18,22 +18,20 @@
 <!--                </ul>-->
 
 
-                <div class="form-row" th:each="competences : ${competences}">-->
-                    <div class="col-7">
-                        <label th:text="${competence.name}">Competences</label>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/formations/edit/' + ${competence.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Edit</button>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <form method="post" th:action="@{'/formations/edit/remove/' + ${competence.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Remove</button>
-                        </form>
-                    </div>
-
+            <div class="form-row" th:each="competence : ${competences}">-->
+                <div class="col-7">
+                    <label th:text="${competence.name}">Competence</label>
                 </div>
+                <div class="col">
+                    <a class="btn btn-outline-secondary" th:href="'/competences/add/' + ${competence.id}">Edit</a>
+                </div>
+                <div class="col">
+                    <form method="post" th:action="@{'/competences/edit/remove/' + ${competence.id}}">
+                        <button type="submit" class="btn-group float-right m-3">Remove</button>
+                    </form>
+                </div>
+
+            </div>
 
 <!--                <div class="form-row" th:each="formation : ${formations}">-->
 <!--                    <div class="col-7">-->
