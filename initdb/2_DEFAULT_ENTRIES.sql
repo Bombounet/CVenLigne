@@ -33,8 +33,5 @@ INSERT INTO defaultdb.users (id, first_name, last_name, birth_day, birth_month, 
 VALUES (1, 'Marion', 'Delort', 26, 12, 1997, 695255000, 'marion.delort@epfedu.fr',
 'Mes bases d''ingenieure generaliste, scientifique et technologique associees a mes realisations en informatique me confortent dans mon projet de travailler dans l''ingenierie numerique. Je cherche un stage de 6 mois en ingenierie numerique pour concretiser mon projet de fin d''etude.',
 '9 avenue de la Lune', 'GENTILLY', 'France', 94250);
-ALTER DATABASE defaultdb CHARACTER SET utf8;
-ALTER TABLE users CHARACTER SET utf8;
-ALTER TABLE users CONVERT TO CHARACTER SET utf8;
 
 
