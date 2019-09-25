@@ -100,10 +100,10 @@ public class LibraryController {
   }*/
 
   @PostMapping("/formations/edit/remove/{id}")
-  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
+  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
 
 
-    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
@@ -116,7 +116,7 @@ public class LibraryController {
   public RedirectView addFormations(RedirectAttributes attrs) throws SQLException {
 
 
-    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
@@ -126,9 +126,8 @@ public class LibraryController {
   }
 
 
-
   @GetMapping("/formations/add/{id}")
-  public String editOneFormation(Model m,  @PathVariable (value="id") long idlong) {
+  public String editOneFormation(Model m, @PathVariable(value = "id") long idlong) {
     System.out.println("laaaa4");
     m.addAttribute("user", getUser(1));
     m.addAttribute("formation_competence_experience", getFormation(1, idlong));
@@ -136,13 +135,13 @@ public class LibraryController {
   }
 
   @PostMapping("/formations/add/{id}")
-  public RedirectView majFormation(@ModelAttribute Formation newData,  @PathVariable (value="id") long idlong, RedirectAttributes attrs) {
+  public RedirectView majFormation(@ModelAttribute Formation newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) {
     List<Formation> formations = getFormations(1);
     System.out.println(newData.getName());
-    formations.get((int)idlong-1).setName(newData.getName());
-    formations.get((int)idlong-1).setPlace(newData.getPlace());
-    formations.get((int)idlong-1).setYear(newData.getYear());
-    formations.get((int)idlong-1).setDescription(newData.getDescription());
+    formations.get((int) idlong - 1).setName(newData.getName());
+    formations.get((int) idlong - 1).setPlace(newData.getPlace());
+    formations.get((int) idlong - 1).setYear(newData.getYear());
+    formations.get((int) idlong - 1).setDescription(newData.getDescription());
     User user = getUser(1);
     user.setFormations(formations);
     userDAO.save(user);
@@ -165,128 +164,166 @@ public class LibraryController {
   }
 
   @PostMapping("/experiences/edit/remove/{id}")
-  public RedirectView removeExperiences(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
+  public RedirectView removeExperiences(@ModelAttribute User newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
 
     String url = "jdbc:mariadb://localhost/defaultdb";
-    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
     Statement statement = conn.createStatement();
     statement.executeUpdate("delete from experiences where id = " + idlong);
     System.out.println("laaaa");
     return new RedirectView("/experiences/edit");
   }
 
-  @GetMapping("/experiences/add/{id}")
-  public String editOneFormation(Model m,  @PathVariable (value="id") long idlong) {
-    System.out.println("laaaa4");
+//  @GetMapping("/experiences/add/{id}")
+//  public String editOneFormation(Model m, @PathVariable(value = "id") long idlong) {
+//    System.out.println("laaaa4");
+//    m.addAttribute("user", getUser(1));
+//    m.addAttribute("formation_competence_experience", getFormation(1, idlong));
+//    return "add_formation_competence_experience";
+//  }
+//
+//  @PostMapping("/experiences/add/{id}")
+//  public RedirectView majFormation(@ModelAttribute Formation newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) {
+//    List<Formation> formations = getFormations(1);
+//    System.out.println(newData.getName());
+//    formations.get((int) idlong - 1).setName(newData.getName());
+//    formations.get((int) idlong - 1).setPlace(newData.getPlace());
+//    formations.get((int) idlong - 1).setYear(newData.getYear());
+//    formations.get((int) idlong - 1).setDescription(newData.getDescription());
+//    User user = getUser(1);
+//    user.setFormations(formations);
+//    userDAO.save(user);
+//    return new RedirectView("/");
+//  }
+  /*------------------------------------------------------------------------------*/
+
+  @GetMapping("/competences")
+  public String competences(Model m) {
     m.addAttribute("user", getUser(1));
-    m.addAttribute("formation_competence_experience", getFormation(1, idlong));
-    return "add_formation_competence_experience";
+    return "see_competences";
   }
 
-  @PostMapping("/experiences/add/{id}")
-  public RedirectView majFormation(@ModelAttribute Formation newData,  @PathVariable (value="id") long idlong, RedirectAttributes attrs) {
-    List<Formation> formations = getFormations(1);
+  @GetMapping("/competences/edit")
+  public String editCompetences(Model m) {
+    m.addAttribute("user", getUser(1));
+    m.addAttribute("competences", getCompetences(1));
+    return "edit_competences";
+  }
+
+  @PostMapping("/competences/edit/remove/{id}")
+  public RedirectView removeCompetence(@ModelAttribute User newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
+
+
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
+    // create a Statement from the connection
+    Statement statement = conn.createStatement();
+    // insert the data
+    statement.executeUpdate("delete from competences where id = " + idlong);
+    System.out.println("laaaa");
+    return new RedirectView("/competences/edit");
+  }
+
+  @GetMapping("/competences/edit/add")
+  public RedirectView addCompetence(RedirectAttributes attrs) throws SQLException {
+
+
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
+    // create a Statement from the connection
+    Statement statement = conn.createStatement();
+    // insert the data
+    statement.executeUpdate("INSERT INTO competences " + "VALUES (ID, ' ' , 1)");
+    System.out.println("laaaa");
+    return new RedirectView("/competences/edit");
+  }
+
+
+  @GetMapping("/competences/add/{id}")
+  public String editOneCompetence(Model m, @PathVariable(value = "id") long idlong) {
+    System.out.println("laaaa4");
+    m.addAttribute("user", getUser(1));
+    m.addAttribute("competence", getCompetence(1, idlong));
+    return "add_competence";
+  }
+
+  @PostMapping("/competences/add/{id}")
+  public RedirectView majCompetence(@ModelAttribute Competence newData, @PathVariable(value = "id") long idlong, RedirectAttributes attrs) {
+    List<Competence> competences = getCompetences(1);
     System.out.println(newData.getName());
-    formations.get((int) idlong - 1).setName(newData.getName());
-    formations.get((int) idlong - 1).setPlace(newData.getPlace());
-    formations.get((int) idlong - 1).setYear(newData.getYear());
-    formations.get((int) idlong - 1).setDescription(newData.getDescription());
+    competences.get((int) idlong - 1).setName(newData.getName());
     User user = getUser(1);
-    user.setFormations(formations);
+    user.setCompetences(competences);
     userDAO.save(user);
     return new RedirectView("/");
   }
-    /*------------------------------------------------------------------------------*/
 
-    @GetMapping("/competences")
-    public String competences (Model m){
-      m.addAttribute("user", getUser(1));
-      return "see_competences";
-    }
+  /*------------------------------------------------------------------------------*/
 
-    @GetMapping("/competences/edit")
-    public String editCompetences (Model m){
-      m.addAttribute("user", getUser(1));
-      m.addAttribute("competences", getCompetences(1));
-      return "edit_competences";
-    }
+  @GetMapping("/projets")
+  public String projets(Model m) {
+    m.addAttribute("user", getUser(1));
+    return "see_projets";
+  }
 
-    @PostMapping("/competences/edit/remove/{id}")
-    public RedirectView removeCompetences (@ModelAttribute User newData,
-    @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
+  @GetMapping("/projets/edit")
+  public String ediProjets(Model m) {
+    m.addAttribute("user", getUser(1));
+    m.addAttribute("projets", getProjets(1));
+    return "edit_projets";
+  }
 
-      String url = "jdbc:mariadb://localhost/defaultdb";
-      Connection conn = DriverManager.getConnection(url, "root", "toor");
-      Statement statement = conn.createStatement();
-      statement.executeUpdate("delete from projets where id = " + idlong);
-      System.out.println("laaaa");
-      return new RedirectView("/");
-    }
+  @PostMapping("/projets/edit/remove/{id}")
+  public RedirectView removeProjets(@ModelAttribute User newData,
+                                    @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
 
-    /*------------------------------------------------------------------------------*/
-
-    @GetMapping("/projets")
-    public String projets (Model m){
-      m.addAttribute("user", getUser(1));
-      return "see_projets";
-    }
-
-    @GetMapping("/projets/edit")
-    public String ediProjets (Model m){
-      m.addAttribute("user", getUser(1));
-      m.addAttribute("projets", getProjets(1));
-      return "edit_projets";
-    }
-
-    @PostMapping("/projets/edit/remove/{id}")
-    public RedirectView removeProjets (@ModelAttribute User newData,
-    @PathVariable(value = "id") long idlong, RedirectAttributes attrs) throws SQLException {
-
-      String url = "jdbc:mariadb://localhost/defaultdb";
-      Connection conn = DriverManager.getConnection(url, "root", "toor");
-      Statement statement = conn.createStatement();
-      statement.executeUpdate("delete from projets where id = " + idlong);
-      System.out.println("laaaa");
-      return new RedirectView("/");
-    }
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url, "root", "toor");
+    Statement statement = conn.createStatement();
+    statement.executeUpdate("delete from projets where id = " + idlong);
+    System.out.println("laaaa");
+    return new RedirectView("/");
+  }
 
 
-    public static User getUser ( long Id){
-      List<User> users = (List<User>) userDAO.findAll();
-      User user = users.get((int) Id - 1);
-      return user;
-    }
+  public static User getUser(long Id) {
+    List<User> users = (List<User>) userDAO.findAll();
+    User user = users.get((int) Id - 1);
+    return user;
+  }
 
-    public static List<Formation> getFormations ( long Id){
-      User user = getUser(Id);
-      List<Formation> formations = user.getFormations();
-      return formations;
-    }
-
-
-    public static List<Projet> getProjets ( long Id){
-      User user = getUser(Id);
-      List<Projet> projets = user.getProjets();
-      return projets;
-    }
-
-    public static List<Experience> getExperiences ( long Id){
-      User user = getUser(Id);
-      List<Experience> experiences = user.getExperiences();
-      return experiences;
-    }
-
-    public static List<Competence> getCompetences ( long Id){
-      User user = getUser(Id);
-      List<Competence> competences = user.getCompetences();
-      return competences;
-    }
-
-    public static Formation getFormation ( long Id, long ID){
-      List<Formation> formations = getFormations(Id);
-      Formation formation = formations.get((int) ID - 1);
-      return formation;
-    }
+  public static List<Formation> getFormations(long Id) {
+    User user = getUser(Id);
+    List<Formation> formations = user.getFormations();
+    return formations;
+  }
 
 
+  public static List<Projet> getProjets(long Id) {
+    User user = getUser(Id);
+    List<Projet> projets = user.getProjets();
+    return projets;
+  }
 
+  public static List<Experience> getExperiences(long Id) {
+    User user = getUser(Id);
+    List<Experience> experiences = user.getExperiences();
+    return experiences;
+  }
+
+  public static List<Competence> getCompetences(long Id) {
+    User user = getUser(Id);
+    List<Competence> competences = user.getCompetences();
+    return competences;
+  }
+
+  public static Formation getFormation(long Id, long ID) {
+    List<Formation> formations = getFormations(Id);
+    Formation formation = formations.get((int) ID - 1);
+    return formation;
+  }
+  public static Competence getCompetence(long Id, long ID) {
+    List<Competence> competences = getCompetences(Id);
+    Competence competence =  competences.get((int) ID - 1);
+    return competence;
+  }
+
+}
