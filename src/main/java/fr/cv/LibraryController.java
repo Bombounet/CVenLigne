@@ -138,13 +138,18 @@ $*/
   @GetMapping("/experiences/edit")
   public String editExperiences(Model m) {
     m.addAttribute("user", getUser(1));
+    m.addAttribute("experiences", getExperiences(1));
     return "edit_experiences";
   }
 
-  @PostMapping("/experiences/edit/{id}")
-  public RedirectView majExperiences(@ModelAttribute User user, @PathVariable String id, RedirectAttributes attrs) {
-    //userDAO.changeInfoExperiences(user);
-    userDAO.save(user);
+  @PostMapping("/experiences/edit/remove/{id}")
+  public RedirectView removeExperiences(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
+
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Statement statement = conn.createStatement();
+    statement.executeUpdate("delete from experiences where id = " + idlong);
+    System.out.println("laaaa");
     return new RedirectView("/");
   }
 
@@ -162,10 +167,14 @@ $*/
     return "edit_competences";
   }
 
-  @PostMapping("/competences/edit/{id}")
-  public RedirectView majCompetences(@ModelAttribute User user,@PathVariable String id, RedirectAttributes attrs) {
-    //userDAO.changeInfoCompetences(user);
-    userDAO.save(user);
+  @PostMapping("/competences/edit/remove/{id}")
+  public RedirectView removeCompetences(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
+
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Statement statement = conn.createStatement();
+    statement.executeUpdate("delete from projets where id = " + idlong);
+    System.out.println("laaaa");
     return new RedirectView("/");
   }
 
@@ -180,15 +189,21 @@ $*/
   @GetMapping("/projets/edit")
   public String ediProjets(Model m) {
     m.addAttribute("user", getUser(1));
+    m.addAttribute("projets", getProjets(1));
     return "edit_projets";
   }
 
-  @PostMapping("/projets/edit/{id}")
-  public RedirectView majProjets(@ModelAttribute User user, @PathVariable String id, RedirectAttributes attrs) {
-    //userDAO.changeInfoProjets(user);
-    userDAO.save(user);
+  @PostMapping("/projets/edit/remove/{id}")
+  public RedirectView removeProjets(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
+
+    String url = "jdbc:mariadb://localhost/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    Statement statement = conn.createStatement();
+    statement.executeUpdate("delete from projets where id = " + idlong);
+    System.out.println("laaaa");
     return new RedirectView("/");
   }
+
 
   public static User getUser(long Id){
     List <User> users  = (List<User>) userDAO.findAll();
@@ -202,5 +217,16 @@ $*/
     return formations;
   }
 
+  public static List<Projet> getProjets(long Id){
+    User user = getUser(Id);
+    List<Projet> projets = user.getProjets();
+    return projets;
+  }
+
+  public static List<Experience> getExperiences(long Id){
+    User user = getUser(Id);
+    List<Experience> experiences = user.getExperiences();
+    return experiences;
+  }
 
 }

@@ -11,6 +11,9 @@
     </nav>
     <div id="content-wrap">
         <p>EXPERIENCES</p>
+
+        <a class="btn btn-outline-secondary" href="/experiences/edit">Edit</a>
+
         <p th:each="experiences, itemStat : ${user.experiences}">
             <a th:text="${experiences.name}"/> </a>
             <a th:text="${experiences.year}"/> </a>
