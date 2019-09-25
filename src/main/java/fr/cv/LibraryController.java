@@ -8,7 +8,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Optional;
 
 /**
  *
@@ -97,14 +96,14 @@ public class LibraryController {
   }*/
 
   @PostMapping("/formations/edit/remove/{id}")
-  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) throws SQLException {
+  public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
 
     String url = "jdbc:mariadb://localhost/defaultdb";
     Connection conn = DriverManager.getConnection(url,"root","toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
-    statement.executeUpdate("delete from formations where id = 1");
+    statement.executeUpdate("delete from formations where id = " + idlong);
     System.out.println("laaaa");
     return new RedirectView("/");
   }
@@ -114,23 +113,18 @@ public class LibraryController {
     User user = userDAO.findById(new Long(1)).get();
     int id = 3;
     long ID = id;
-    //Formation formation = new Formation( ID, "EPS", "2050" , "mtp", "BLOBLO ", user);
-    //user.getFormations().add(formation);
 
-    for (int i = 0; i < user.getFormations().size() ; i++){
-      System.out.println(user.getFormations().get(i).getName());
-    }
-    String url = "jdbc:mariadb://localhost/defaultdb";
+   /* String url = "jdbc:mariadb://localhost/defaultdb";
     Connection conn = DriverManager.getConnection(url,"root","toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
     statement.executeUpdate("INSERT INTO formations " + "VALUES (ID, 'EPS', '2050', 'mtp', 'balbval', 1)");
-
+$*/
 
     userDAO.save(user);
     System.out.println("laaaa2");
-    return "add";
+    return "add_formation";
   }
 
   /*------------------------------------------------------------------------------*/

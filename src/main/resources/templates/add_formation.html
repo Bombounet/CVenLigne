@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="template :: headder"></head>
+
+<body>
+<div id="page-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My CV</a>
+        <div th:replace="template :: navbar"></div>
+    </nav>
+
+    <div id="content-wrap">
+        <div class="container">
+            <form method="post" th:action="@{'/formations/edit/' + ${user.id}}" th:object="formation">
+                <div class="form-group">
+                    <label for="nameInput">Nom</label>
+                    <input type="text" th:field="*{formation.name}" class="form-control" id="nameInput">
+                </div>
+                <div class="form-group">
+                    <label for="placeInput">Lieu</label>
+                    <input type="text" th:field="*{formation.place}" class="form-control" id="placeInput">
+                </div>
+                <div class="form-group">
+                    <label for="yearInput">Année</label>
+                    <input type="text" th:field="*{formation.year}" class="form-control" id="yearInput">
+                </div>
+
+                <div class="form-row">
+                    <div class="col-7">
+                        <label for="descriptionInput">Description</label>
+                        <input type="text" th:field="*{formation.description}" class="form-control" id="descriptionInput">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-group float-right m-3">Back</button>
+            </form>
+        </div>
+        <!--        <div th:replace="template :: backbtn"></div>-->
+    </div>
+    <div th:replace="template :: footerbar"></div>
+</div>
+</body>
+</html>
