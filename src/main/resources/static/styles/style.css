@@ -4,8 +4,8 @@ body {
 }
 
 .firstsection {
-    background-image:url(/images/unicorn.jpg);
-    /*background-image:url(http://media.paperblog.fr/i/667/6671820/fond-decran-ios-7-iphone-ipad-imac-L-92xdUE.jpeg);*/
+    background-image: url("/images/woaw.jpg");
+    /*background-image:url(https://hdfondsdecran.com/image/201609/2189/arc-en-ciel-ligne.jpg);*/
     background-size: 100% 100%;
     color: black;
     text: bold;
@@ -27,17 +27,19 @@ body {
     width: 30px;
 }
 
-
-.centrer {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.date{
+    color:blue ; !important;
 }
 
 table {
     width: 100%;
-    text-align: center;
 }
+td {
+     text-align: center;
+     vertical-align: top;
+     padding-left: 2rem;
+     padding-right: 2rem;
+ }
 
 td {
     padding-bottom: 2rem;
