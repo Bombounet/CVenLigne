@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="template :: headder"></head>
 
@@ -9,15 +9,17 @@
         <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My CV</a>
         <div th:replace="template :: navbar"></div>
     </nav>
-    <div id="content-wrap">
-        <p>COMPETENCES</p>
-        <div>
-            <a class="btn btn-outline-secondary" href="/competences/edit">Edit</a>
-        </div>
-        <p th:each="competences, itemStat : ${user.competences}">
-            <a th:text="${competences.name}"/> </a>
-        </p>
-        <div th:replace="template :: backbtn"></div>
+    <div id="content-wrap">v th:replace="template :: backbtn"></div>
+        <section>
+            <h2>COMPETENCES</h2>
+            <p th:each="competences, itemStat : ${user.competences}">
+                <a th:text="${competences.name}"/> </a>
+            </p>
+            <div>
+                <a class="btn btn-outline-secondary" href="/competences/edit">Edit</a>
+            </div>
+            <div th:replace="template :: backbtn"></div>
+        </section>
     </div>
     <div th:replace="template :: footerbar"></div>
 </div>
