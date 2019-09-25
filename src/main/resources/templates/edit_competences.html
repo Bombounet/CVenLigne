@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="template :: headder"></head>
+
+<body>
+<div id="page-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" style="color:blue;" th:text="${user.lastName} +' '+ ${user.firstName}">My CV</a>
+        <div th:replace="template :: navbar"></div>
+    </nav>
+    <div id="content-wrap">
+        <div class="container" th:object="${competences}">
+
+
+<!--                <ul th:each="formation : ${user.formations}">-->
+<!--                    <li th:text="${formation.name}"></li>-->
+<!--                </ul>-->
+
+
+                <div class="form-row" th:each="competences : ${competences}">-->
+                    <div class="col-7">
+                        <label th:text="${competence.name}">Competences</label>
+                    </div>
+                    <div class="col">
+                        <form method="post" th:action="@{'/formations/edit/' + ${competence.id}}">
+                            <button type="submit" class="btn-group float-right m-3">Edit</button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form method="post" th:action="@{'/formations/edit/remove/' + ${competence.id}}">
+                            <button type="submit" class="btn-group float-right m-3">Remove</button>
+                        </form>
+                    </div>
+
+                </div>
+
+<!--                <div class="form-row" th:each="formation : ${formations}">-->
+<!--                    <div class="col-7">-->
+<!--                        <label for="nameInput">Nom</label>-->
+<!--                        <input type="text" th:field="${formation.name}" class="form-control" id="nameInput">-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <label for="yearInput">Annee</label>-->
+<!--                        <input type="field" th:field="${formation.year}" class="form-control" id="yearInput">-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <label for="placeInput">Lieux</label>-->
+<!--                        <input type="field" th:field="${formation.place}" class="form-control" id="placeInput">-->
+<!--                    </div>-->
+<!--                    <div class="raw">-->
+<!--                        <label for="descriptionInput">Description</label>-->
+<!--                        <input type="field" th:field="${formation.description}" class="form-control" id="descriptionInput">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+
+
+
+                <a class="btn-group float-right m-3" href="/formations/edit/add">Add</a>
+        </div>
+        <!--        <div th:replace="template :: backbtn"></div>-->
+    </div>
+    <div th:replace="template :: footerbar"></div>
+</div>
+</body>
+</html>

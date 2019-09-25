@@ -164,6 +164,7 @@ $*/
   @GetMapping("/competences/edit")
   public String editCompetences(Model m) {
     m.addAttribute("user", getUser(1));
+    m.addAttribute("competences", getCompetences(1));
     return "edit_competences";
   }
 
@@ -227,6 +228,12 @@ $*/
     User user = getUser(Id);
     List<Experience> experiences = user.getExperiences();
     return experiences;
+  }
+
+  public static List<Competence> getCompetences(long Id){
+    User user = getUser(Id);
+    List<Competence> competences = user.getCompetences();
+    return competences;
   }
 
 }
