@@ -12,7 +12,7 @@
 
     <div id="content-wrap">
         <div class="container">
-            <form method="post" th:action="@{'/formations/add/' + ${competence.id}}" th:object="${competence}">
+            <form method="post" th:action="@{'/competences/add/' + ${competence.id}}" th:object="${competence}">
                 <div class="form-group">
                     <label for="nameInput">Nom</label>
                     <input type="text" th:field="*{name}" class="form-control" id="nameInput">
