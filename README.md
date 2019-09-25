@@ -9,9 +9,11 @@
 
 4. Tous les scripts sql contenus dans le dossier initdb seront exécutés automatiquement lors du premier chargement de la DB.
 
-5. Dans IntelliJ IDEA et cliquez sur run "Application" ou MAJ+F10
+5. Dans Application.properties et LibraryControler changer l'url en haut de page en fonction de votre distribution (localhost & 192.168.99.100)
 
-6. Ouvrir l'URL "http://localhost:8080/"
+6. Dans IntelliJ IDEA et cliquez sur run "Application" ou MAJ+F10
+
+7. Ouvrir l'URL "http://localhost:8080/"
 
 =====
 DESCRIPTION DES PAGES
@@ -41,3 +43,4 @@ Cela permet à un CV d'être efficace, lisible et de se démarquer des autres.
 
 
 
+PS : Commande gitk non recommandé :)
