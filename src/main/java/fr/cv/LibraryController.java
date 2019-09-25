@@ -98,16 +98,34 @@ public class LibraryController {
 
   @PostMapping("/formations/remove/{id}")
   public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long id, RedirectAttributes attrs) {
-    System.out.println("laaaaaaaaaa");
+    System.out.println("laaaaaaaaaa id = " + id);
     User user = userDAO.findById(id).get();
-    System.out.println(user.getFormations().get((int)id - 1).getName());
+    System.out.println("Formations : ");
+    for(int i = 0 ; i < user.getFormations().size() ; i++){
+      System.out.println(user.getFormations().get(i).getName());
+    }
+    System.out.println("Del : " + user.getFormations().get((int)id - 1).getName());
 
     List<Formation> formations = user.getFormations();
+    System.out.println("Formations : avant del");
+    for(int i = 0 ; i < formations.size() ; i++){
+      System.out.println(formations.get(i).getName());
+    }
     formations.remove((int) id -1);
-    System.out.println(user.getFormations().get((int)id - 1).getName());
-
-
+    System.out.println("Formations : apres del");
+    for(int i = 0 ; i < formations.size() ; i++){
+      System.out.println(formations.get(i).getName());
+    }
+    user.setFormations(formations);
+    System.out.println("Formations : formation -> user");
+    for(int i = 0 ; i < user.getFormations().size() ; i++){
+      System.out.println(user.getFormations().get(i).getName());
+    }
     userDAO.save(user);
+    System.out.println("Formations : save");
+    for(int i = 0 ; i < user.getFormations().size() ; i++){
+      System.out.println(user.getFormations().get(i).getName());
+    }
 
     return new RedirectView("/");
   }
