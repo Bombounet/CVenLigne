@@ -12,24 +12,24 @@
 
     <div id="content-wrap">
         <div class="container">
-            <form method="post" th:action="@{'/formations/edit/' + ${user.id}}" th:object="formation">
+            <form method="post" th:action="@{'/formations/add/' + ${formation_competence_experience.id}}" th:object="${formation_competence_experience}">
                 <div class="form-group">
                     <label for="nameInput">Nom</label>
-                    <input type="text" th:field="*{formation.name}" class="form-control" id="nameInput">
+                    <input type="text" th:field="*{name}" class="form-control" id="nameInput">
                 </div>
                 <div class="form-group">
                     <label for="placeInput">Lieu</label>
-                    <input type="text" th:field="*{formation.place}" class="form-control" id="placeInput">
+                    <input type="text" th:field="*{place}" class="form-control" id="placeInput">
                 </div>
                 <div class="form-group">
-                    <label for="yearInput">Année</label>
-                    <input type="text" th:field="*{formation.year}" class="form-control" id="yearInput">
+                    <label for="yearInput">Annee</label>
+                    <input type="text" th:field="*{year}" class="form-control" id="yearInput">
                 </div>
 
                 <div class="form-row">
                     <div class="col-7">
                         <label for="descriptionInput">Description</label>
-                        <input type="text" th:field="*{formation.description}" class="form-control" id="descriptionInput">
+                        <input type="text" th:field="*{description}" class="form-control" id="descriptionInput">
                     </div>
                 </div>
 

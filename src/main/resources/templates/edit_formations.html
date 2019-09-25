@@ -23,9 +23,7 @@
                         <label th:text="${formation.name}+' '+ ${formation.year}">Formation</label>
                     </div>
                     <div class="col">
-                        <form method="post" th:action="@{'/formations/edit/' + ${formation.id}}">
-                            <button type="submit" class="btn-group float-right m-3">Edit</button>
-                        </form>
+                        <a class="btn btn-outline-secondary" th:href="'/formations/add/' + ${formation.id}">Edit</a>
                     </div>
                     <div class="col">
                         <form method="post" th:action="@{'/formations/edit/remove/' + ${formation.id}}">
