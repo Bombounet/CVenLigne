@@ -98,33 +98,63 @@ public class LibraryController {
   @PostMapping("/formations/edit/remove/{id}")
   public RedirectView removeFormations(@ModelAttribute User newData, @PathVariable (value="id") long idlong, RedirectAttributes attrs) throws SQLException {
 
-    String url = "jdbc:mariadb://localhost/defaultdb";
+    String url = "jdbc:mariadb://192.168.99.100/defaultdb";
     Connection conn = DriverManager.getConnection(url,"root","toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
     statement.executeUpdate("delete from formations where id = " + idlong);
     System.out.println("laaaa");
-    return new RedirectView("/");
+    return new RedirectView("/formations/edit");
   }
 
   @GetMapping("/formations/edit/add")
-  public String add(Model m) throws SQLException {
-    User user = userDAO.findById(new Long(1)).get();
-    int id = 3;
-    long ID = id;
+  public RedirectView addFormations(RedirectAttributes attrs) throws SQLException {
 
-   /* String url = "jdbc:mariadb://localhost/defaultdb";
+    String url = "jdbc:mariadb://192.168.99.100/defaultdb";
     Connection conn = DriverManager.getConnection(url,"root","toor");
     // create a Statement from the connection
     Statement statement = conn.createStatement();
     // insert the data
-    statement.executeUpdate("INSERT INTO formations " + "VALUES (ID, 'EPS', '2050', 'mtp', 'balbval', 1)");
-$*/
+    statement.executeUpdate("INSERT INTO formations " + "VALUES (ID, ' ' , ' '  , ' '  ,  ' ' , 1)");
+    System.out.println("laaaa");
+    return new RedirectView("/formations/edit");
+  }
 
+  @PostMapping("/formations/add/null")
+  public RedirectView addFormation(@ModelAttribute Formation newData, RedirectAttributes attrs) throws SQLException {
+    String url = "jdbc:mariadb://192.168.99.100/defaultdb";
+    Connection conn = DriverManager.getConnection(url,"root","toor");
+    // create a Statement from the connection
+    Statement statement = conn.createStatement();
+
+    String name = newData.getName();
+    // insert the data
+    statement.executeUpdate("INSERT INTO formations " + "VALUES (ID, name, name, name, name, 1)");
+    return new RedirectView("/");
+  }
+
+
+  @GetMapping("/formations/add/{id}")
+  public String editOneFormation(Model m,  @PathVariable (value="id") long idlong) {
+    System.out.println("laaaa4");
+    m.addAttribute("user", getUser(1));
+    m.addAttribute("formation_competence_experience", getFormation(1, idlong));
+    return "add_formation_competence_experience";
+  }
+
+  @PostMapping("/formations/add/{id}")
+  public RedirectView majFormation(@ModelAttribute Formation newData,  @PathVariable (value="id") long idlong, RedirectAttributes attrs) {
+    List<Formation> formations = getFormations(1);
+    System.out.println(newData.getName());
+    formations.get((int)idlong-1).setName(newData.getName());
+    formations.get((int)idlong-1).setPlace(newData.getPlace());
+    formations.get((int)idlong-1).setYear(newData.getYear());
+    formations.get((int)idlong-1).setDescription(newData.getDescription());
+    User user = getUser(1);
+    user.setFormations(formations);
     userDAO.save(user);
-    System.out.println("laaaa2");
-    return "add_formation";
+    return new RedirectView("/");
   }
 
   /*------------------------------------------------------------------------------*/
@@ -190,6 +220,8 @@ $*/
     return new RedirectView("/");
   }
 
+  /*------------------------------------------------------------------------------*/
+
   public static User getUser(long Id){
     List <User> users  = (List<User>) userDAO.findAll();
     User user = users.get((int)Id-1);
@@ -200,6 +232,12 @@ $*/
     User user = getUser(Id);
     List<Formation> formations = user.getFormations();
     return formations;
+  }
+
+  public static Formation getFormation(long Id, long ID){
+    List<Formation> formations = getFormations(Id);
+    Formation formation = formations.get((int)ID-1);
+    return formation;
   }
 
 
